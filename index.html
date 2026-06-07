@@ -2762,7 +2762,27 @@ document.addEventListener('keydown', e => {
 });
 
 /* ── FORM HANDLING ── */
-function handleSubmit(e, successId) {
+/* ── SUPABASE CONFIG ── */
+const SUPABASE_URL  = 'https://nzxatlxgbjvggeyyiapm.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im56eGF0bHhnYmp2Z2dleXlpYXBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA4MjI4MDIsImV4cCI6MjA5NjM5ODgwMn0.egs2aF6HW_0_cKdMK31ZrWpomjTvDvFC4ZQKvbOMjFk';
+
+async function saveToSupabase(data) {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON,
+        'Authorization': `Bearer ${SUPABASE_ANON}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+    return res.ok;
+  } catch { return false; }
+}
+
+async function handleSubmit(e, successId) {
   e.preventDefault();
   const form = e.target;
   let valid = true;
@@ -2781,10 +2801,27 @@ function handleSubmit(e, successId) {
     }
   });
 
-  if (!valid) {
-    announce('יש שדות חובה שלא מולאו');
-    return;
-  }
+  if (!valid) { announce('יש שדות חובה שלא מולאו'); return; }
+
+  // Collect form data
+  const fd = new FormData(form);
+  const payload = {
+    first_name:   fd.get('first') || fd.get('name') || '',
+    last_name:    fd.get('last')  || '',
+    phone:        fd.get('phone') || '',
+    email:        fd.get('email') || '',
+    jewelry_type: fd.get('type')  || '',
+    message:      fd.get('message') || '',
+    source:       successId === 'modal-success' ? 'modal' : 'contact_form'
+  };
+
+  // Show loading state
+  const submitBtn = form.querySelector('[type="submit"]');
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
+
+  await saveToSupabase(payload);
+
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
 
   const msg = document.getElementById(successId);
   if (msg) {
