@@ -1045,9 +1045,44 @@
       .g-card { flex: 0 0 calc(50% - 0.6rem); }
     }
     @media (max-width: 600px) {
-      .g-card { flex: 0 0 calc(100% - 0rem); }
-      .carousel-prev { right: -12px; }
-      .carousel-next { left: -12px; }
+      .g-card { flex: 0 0 90vw; min-width: 0; }
+      .carousel-track-wrap { overflow: visible; }
+      .carousel-outer { overflow: hidden; padding: 0 1rem; }
+      .carousel-prev { right: 0; }
+      .carousel-next { left: 0; }
+      .carousel-arrow { width: 36px; height: 36px; font-size: 0.9rem; top: auto; bottom: -48px; transform: none; }
+      .carousel-dots { margin-top: 56px; }
+    }
+
+    /* WhatsApp כפתור צף */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 9999;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50px;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Heebo', sans-serif;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: waPulse 2s infinite;
+    }
+    .whatsapp-btn:hover { transform: scale(1.06); box-shadow: 0 6px 28px rgba(37,211,102,0.7); }
+    @keyframes waPulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+      50%      { box-shadow: 0 4px 32px rgba(37,211,102,0.85); }
+    }
+    @media (max-width: 600px) {
+      .whatsapp-btn span.wa-text { display: none; }
+      .whatsapp-btn { padding: 14px; border-radius: 50%; bottom: 16px; left: 16px; }
     }
 
     /* ── CONTACT ── */
@@ -1597,11 +1632,11 @@
 
         <div class="hero-stats" role="list" aria-label="נתוני העסק">
           <div class="stat" role="listitem">
-            <span class="stat-num" data-count="500" aria-label="מעל 500">+500</span>
+            <span class="stat-num" data-count="100" aria-label="מעל 100">+100</span>
             <span class="stat-label">תכשיטים נוצרו</span>
           </div>
           <div class="stat" role="listitem">
-            <span class="stat-num" data-count="8" aria-label="8">8</span>
+            <span class="stat-num" data-count="4" aria-label="4">4</span>
             <span class="stat-label">שנות ניסיון</span>
           </div>
           <div class="stat" role="listitem">
@@ -1632,11 +1667,11 @@
 
         <div class="about-badges" role="list" aria-label="נתוני ניסיון">
           <div class="about-badge" role="listitem">
-            <span class="about-badge-num" data-count="500">+500</span>
+            <span class="about-badge-num" data-count="100">+100</span>
             <span class="about-badge-label">תכשיטים שנוצרו</span>
           </div>
           <div class="about-badge" role="listitem">
-            <span class="about-badge-num" data-count="8">8</span>
+            <span class="about-badge-num" data-count="4">4</span>
             <span class="about-badge-label">שנות ניסיון</span>
           </div>
           <div class="about-badge" role="listitem">
@@ -3182,5 +3217,17 @@ function showA11yStatement() {
   } else { awFontLevel = 3; }
 })();
 </script>
+
+<!-- כפתור WhatsApp צף -->
+<a class="whatsapp-btn"
+   href="https://wa.me/972542985027?text=%D7%94%D7%99%D7%99%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%90%D7%9C%D7%99%D7%9A%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%F0%9F%92%8D%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A2%D7%A9%D7%95%D7%AA%20%D7%AA%D7%9B%D7%A9%D7%99%D7%98"
+   target="_blank" rel="noopener noreferrer"
+   aria-label="שלח הודעת WhatsApp לנמטייב תכשיטים">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="wa-text">שלחו לנו WhatsApp</span>
+</a>
+
 </body>
 </html>
