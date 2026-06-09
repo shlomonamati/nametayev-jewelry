@@ -2867,28 +2867,27 @@ function announce(msg) {
   }
   function max() { return Math.max(0, total - visible()); }
 
-  function setWidths() {
-    const gap = 19; // 1.2rem ≈ 19px
-    const w = (track.parentElement.offsetWidth - gap * (visible() - 1)) / visible();
-    cards.forEach(c => c.style.flex = '0 0 ' + w + 'px');
-  }
-
   // Build dots
   function buildDots() {
     dotsBox.innerHTML = '';
-    for (let i = 0; i <= max(); i++) {
+    const m = max();
+    for (let i = 0; i <= m; i++) {
       const d = document.createElement('button');
       d.className = 'rev-dot' + (i === 0 ? ' active' : '');
-      d.addEventListener('click', () => goTo(i));
+      d.setAttribute('aria-label', 'ביקורת ' + (i + 1));
+      d.addEventListener('click', () => { goTo(i); startAuto(); });
       dotsBox.appendChild(d);
     }
   }
 
   function goTo(idx) {
     cur = Math.max(0, Math.min(idx, max()));
-    const gap = 19;
+    // Use CSS var for gap (1.2rem = 19.2px at 16px base)
+    const gap = parseFloat(getComputedStyle(track).gap) || 19;
     const cardW = cards[0].getBoundingClientRect().width;
-    track.style.transform = 'translateX(-' + (cur * (cardW + gap)) + 'px)';
+    if (cardW > 0) {
+      track.style.transform = 'translateX(-' + (cur * (cardW + gap)) + 'px)';
+    }
     if (btnPrev) btnPrev.disabled = cur === 0;
     if (btnNext) btnNext.disabled = cur >= max();
     dotsBox.querySelectorAll('.rev-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
@@ -2907,7 +2906,7 @@ function announce(msg) {
   // Swipe
   let tx = 0;
   track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend',   e => {
+  track.addEventListener('touchend', e => {
     const dx = tx - e.changedTouches[0].clientX;
     if (Math.abs(dx) > 40) { goTo(dx > 0 ? cur + 1 : cur - 1); startAuto(); }
   });
@@ -2916,17 +2915,25 @@ function announce(msg) {
   track.parentElement.addEventListener('mouseenter', () => clearInterval(auto));
   track.parentElement.addEventListener('mouseleave', startAuto);
 
-  // Resize
+  // Rebuild on resize
   let rt;
   window.addEventListener('resize', () => {
     clearTimeout(rt);
-    rt = setTimeout(() => { setWidths(); buildDots(); goTo(Math.min(cur, max())); }, 150);
+    rt = setTimeout(() => { buildDots(); goTo(Math.min(cur, max())); }, 200);
   });
 
-  setWidths();
-  buildDots();
-  goTo(0);
-  startAuto();
+  // Wait for fonts/layout before init
+  function init() {
+    buildDots();
+    goTo(0);
+    startAuto();
+  }
+
+  if (document.readyState === 'complete') {
+    init();
+  } else {
+    window.addEventListener('load', init);
+  }
 })();
 
 /* ── ACCESSIBILITY WIDGET ── */
