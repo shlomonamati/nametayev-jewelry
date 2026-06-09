@@ -138,8 +138,8 @@
   <!-- נגישות: Open Sans + Heebo for Hebrew -->
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
 
-  <!-- Three.js for 3D ring -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Three.js for 3D ring — defer for faster load -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 
   <style>
     /* ── RESET & ROOT ── */
@@ -1595,14 +1595,16 @@
   <!-- HERO -->
   <section class="hero" id="home" aria-labelledby="hero-heading">
 
-    <!-- Video side -->
+    <!-- Photo side -->
     <div class="hero-photo-side">
-      <video
-        src="images/hero-ring.mov"
-        autoplay muted loop playsinline
-        aria-label="טבעת אובל מרכזית עם יהלומים בצדדים"
-        style="width:100%;height:100%;object-fit:cover;display:block;"
-      ></video>
+      <img
+        src="images/ring-oval.png"
+        alt="טבעת אובל מרכזית עם יהלומים בצדדים — נמטייב תכשיטים"
+        width="900" height="900"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
     </div>
 
     <!-- Text side -->
@@ -1711,7 +1713,7 @@
 
       <article class="portfolio-item reveal" role="listitem" tabindex="0" aria-label="טבעת אובל מרכזית עם יהלומים">
         <img
-          src="images/ring-oval.png"
+          src="images/ring-oval.jpg"
           alt="טבעת אובל מרכזית עם יהלומים בעיצוב אישי"
           width="600" height="450" loading="lazy"
         />
@@ -1723,7 +1725,7 @@
 
       <article class="portfolio-item reveal reveal-delay-1" role="listitem" tabindex="0" aria-label="טבעת מרקיזה — עיצוב ייחודי">
         <img
-          src="images/ring-marquise.png"
+          src="images/ring-marquise.jpg"
           alt="טבעת מרקיזה זהב בעיצוב אישי"
           width="600" height="450" loading="lazy"
         />
@@ -1735,7 +1737,7 @@
 
       <article class="portfolio-item reveal reveal-delay-2" role="listitem" tabindex="0" aria-label="צמידי טניס — יהלומים מסביב">
         <img
-          src="images/bracelets-tennis.png"
+          src="images/bracelets-tennis.jpg"
           alt="צמידי טניס זהב עם יהלומים"
           width="600" height="450" loading="lazy"
         />
@@ -1747,7 +1749,7 @@
 
       <article class="portfolio-item reveal" role="listitem" tabindex="0" aria-label="שרשרת עם תליון טיפה">
         <img
-          src="images/necklace-drop.jpg"
+          src="images/necklace-drop-c.jpg"
           alt="שרשרת זהב עם תליון טיפה"
           width="600" height="450" loading="lazy"
         />
@@ -1759,7 +1761,7 @@
 
       <article class="portfolio-item reveal reveal-delay-1" role="listitem" tabindex="0" aria-label="שתי טבעות — זוג מושלם">
         <img
-          src="images/rings-two.png"
+          src="images/rings-two.jpg"
           alt="שתי טבעות זהב בעיצוב אישי"
           width="600" height="450" loading="lazy"
         />
@@ -1771,7 +1773,7 @@
 
       <article class="portfolio-item reveal reveal-delay-2" role="listitem" tabindex="0" aria-label="עגיל טיפה עם יהלומים">
         <img
-          src="images/earring-drop.png"
+          src="images/earring-drop.jpg"
           alt="עגיל טיפה זהב עם יהלומים"
           width="600" height="450" loading="lazy"
         />
