@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nametayev-jewelry.vercel.app/sitemap.xml
+Sitemap: https://namatievjewllery.com/sitemap.xml
