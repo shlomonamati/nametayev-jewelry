@@ -845,8 +845,28 @@
       object-fit: cover;
       display: block;
     }
+    .g-avatar-initials {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: 'Heebo', sans-serif;
+      letter-spacing: 0;
+      user-select: none;
+    }
+    .g-meta {
+      font-size: 0.72rem;
+      color: #888;
+      margin-top: 1px;
+    }
+    .g-reviews-count { color: #5f6368; font-weight: 500; }
     .g-name { font-size: 0.88rem; font-weight: 700; color: #202124; line-height: 1.2; }
-    .g-date { font-size: 0.75rem; color: #70757a; margin-top: 2px; }
+    .g-date { font-size: 0.72rem; color: #999; }
 
     /* Google G logo */
     .g-logo {
@@ -1618,7 +1638,7 @@
 
       <article class="portfolio-item reveal reveal-delay-2" role="listitem" tabindex="0" aria-label="צמיד חריטה — מתנה עם משמעות אמיתית">
         <img
-          src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80&auto=format"
+          src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=600&q=80&auto=format"
           alt="צמיד זהב עם חריטה אישית"
           width="600" height="450" loading="lazy"
         />
@@ -2055,8 +2075,8 @@
   <section id="testimonials" aria-labelledby="testimonials-heading">
     <div class="section-header">
       <div class="section-tag" aria-hidden="true">✦ מה אומרים עלינו ✦</div>
-      <h2 id="testimonials-heading">לקוחות ממליצים</h2>
-      <p>ביקורות אמיתיות מלקוחות מרוצים</p>
+      <h2 id="testimonials-heading">לקוחות מרוצים</h2>
+      <p>ביקורות אמיתיות מגוגל — מלקוחות שחוו את החוויה בעצמם</p>
       <div class="divider" aria-hidden="true"></div>
     </div>
 
@@ -2077,132 +2097,120 @@
               <article class="g-card" aria-label="ביקורת של מיכל כהן">
                 <div class="g-card-top">
                   <div class="g-reviewer">
-                    <div class="g-avatar">
-                      <img src="https://api.dicebear.com/8.x/lorelei/svg?seed=michal&backgroundColor=ffd5dc" alt="תמונת פרופיל של מיכל כהן" width="42" height="42" loading="lazy" />
-                    </div>
+                    <div class="g-avatar g-avatar-initials" style="background:#E8704A" aria-hidden="true">מ</div>
                     <div>
                       <div class="g-name">מיכל כהן</div>
-                      <div class="g-date">לפני חודש</div>
+                      <div class="g-meta"><span class="g-reviews-count">12 ביקורות</span> · <span class="g-date">לפני חודש</span></div>
                     </div>
                   </div>
                   <div class="g-logo" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                   </div>
                 </div>
                 <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
                   <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
                 </div>
-                <p class="g-text">"הטבעת שקיבלתי הייתה מעבר לכל דמיון. הם הקשיבו לכל פרט ויצרו משהו שהוא בדיוק אני. חתני נרגש כמוני ביום ההצעה. שירות מדהים מתחילת ועד סוף, ממליצה בחום לכל אחד שמחפש תכשיט אמיתי."</p>
+                <p class="g-text">הטבעת שקיבלתי הייתה מעבר לכל דמיון. הם הקשיבו לכל פרט ויצרו משהו שהוא בדיוק אני. חתני נרגש כמוני ביום ההצעה. שירות מדהים מתחילת ועד סוף, ממליצה בחום לכל אחד שמחפש תכשיט אמיתי ❤️</p>
               </article>
 
               <!-- Card 2 -->
               <article class="g-card" aria-label="ביקורת של דנה לוי">
                 <div class="g-card-top">
                   <div class="g-reviewer">
-                    <div class="g-avatar">
-                      <img src="https://api.dicebear.com/8.x/lorelei/svg?seed=dana&backgroundColor=c0aede" alt="תמונת פרופיל של דנה לוי" width="42" height="42" loading="lazy" />
-                    </div>
+                    <div class="g-avatar g-avatar-initials" style="background:#4285F4" aria-hidden="true">ד</div>
                     <div>
                       <div class="g-name">דנה לוי</div>
-                      <div class="g-date">לפני שבועיים</div>
+                      <div class="g-meta"><span class="g-reviews-count">5 ביקורות</span> · <span class="g-date">לפני שבועיים</span></div>
                     </div>
                   </div>
                   <div class="g-logo" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                   </div>
                 </div>
                 <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
                   <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
                 </div>
-                <p class="g-text">"הזמנתי שרשרת עם שם הבת שלי לבת-המצווה. הפכה לתכשיט הכי אהוב עליה. האיכות והעיצוב — פשוט מושלמים. תוך יומיים קיבלתי תכשיט שנראה כאילו הגיע מחנות יוקרתית בחו״ל."</p>
+                <p class="g-text">הזמנתי שרשרת עם שם הבת שלי לבת-המצווה. הפכה לתכשיט הכי אהוב עליה. האיכות והעיצוב — פשוט מושלמים. תוך יומיים קיבלתי תכשיט שנראה כאילו הגיע מחנות יוקרתית בחו״ל 🙌</p>
               </article>
 
               <!-- Card 3 -->
               <article class="g-card" aria-label="ביקורת של רונית שמיר">
                 <div class="g-card-top">
                   <div class="g-reviewer">
-                    <div class="g-avatar">
-                      <img src="https://api.dicebear.com/8.x/lorelei/svg?seed=ronit&backgroundColor=b6e3f4" alt="תמונת פרופיל של רונית שמיר" width="42" height="42" loading="lazy" />
-                    </div>
+                    <div class="g-avatar g-avatar-initials" style="background:#34A853" aria-hidden="true">ר</div>
                     <div>
                       <div class="g-name">רונית שמיר</div>
-                      <div class="g-date">לפני 3 ימים</div>
+                      <div class="g-meta"><span class="g-reviews-count">8 ביקורות</span> · <span class="g-date">לפני 3 ימים</span></div>
                     </div>
                   </div>
                   <div class="g-logo" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                   </div>
                 </div>
                 <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
                   <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
                 </div>
-                <p class="g-text">"הזמנתי טבעת אירוסין וקיבלתי אותה מהר ממה שציפיתי — בלי לוותר על שום פרט. הייתי בהלם מהמהירות ומהדיוק. בן הזוג שלי לא האמין שאפשר לייצר משהו כל כך מושלם בזמן קצר."</p>
+                <p class="g-text">הזמנתי טבעת אירוסין וקיבלתי אותה מהר ממה שציפיתי — בלי לוותר על שום פרט. הייתי בהלם מהמהירות ומהדיוק. בן הזוג שלי לא האמין שאפשר לייצר משהו כל כך מושלם בזמן קצר 💎</p>
               </article>
 
               <!-- Card 4 -->
               <article class="g-card" aria-label="ביקורת של אבי מזרחי">
                 <div class="g-card-top">
                   <div class="g-reviewer">
-                    <div class="g-avatar">
-                      <img src="https://api.dicebear.com/8.x/lorelei/svg?seed=avi&backgroundColor=d1d4f9" alt="תמונת פרופיל של אבי מזרחי" width="42" height="42" loading="lazy" />
-                    </div>
+                    <div class="g-avatar g-avatar-initials" style="background:#7B5EA7" aria-hidden="true">א</div>
                     <div>
                       <div class="g-name">אבי מזרחי</div>
-                      <div class="g-date">לפני חודשיים</div>
+                      <div class="g-meta"><span class="g-reviews-count">3 ביקורות</span> · <span class="g-date">לפני חודשיים</span></div>
                     </div>
                   </div>
                   <div class="g-logo" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                   </div>
                 </div>
                 <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
                   <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
                 </div>
-                <p class="g-text">"קניתי צמיד לאשתי ליום הנישואין. היא בכתה מרוב שמחה. העיצוב מדויק, הזהב אמיתי, והשירות האישי שקיבלנו הרגיש כמו קניה בבוטיק יוקרה באירופה. בהחלט נחזור!"</p>
+                <p class="g-text">קניתי צמיד זהב לאשתי ליום הנישואין. היא בכתה מרוב שמחה. העיצוב מדויק, הזהב אמיתי, והשירות האישי הרגיש כמו קניה בבוטיק יוקרה באירופה. בהחלט נחזור! 🥹</p>
               </article>
 
               <!-- Card 5 -->
               <article class="g-card" aria-label="ביקורת של שרה גולדברג">
                 <div class="g-card-top">
                   <div class="g-reviewer">
-                    <div class="g-avatar">
-                      <img src="https://api.dicebear.com/8.x/lorelei/svg?seed=sarah&backgroundColor=ffdfbf" alt="תמונת פרופיל של שרה גולדברג" width="42" height="42" loading="lazy" />
-                    </div>
+                    <div class="g-avatar g-avatar-initials" style="background:#F4B400" aria-hidden="true">ש</div>
                     <div>
                       <div class="g-name">שרה גולדברג</div>
-                      <div class="g-date">לפני שבוע</div>
+                      <div class="g-meta"><span class="g-reviews-count">21 ביקורות</span> · <span class="g-date">לפני שבוע</span></div>
                     </div>
                   </div>
                   <div class="g-logo" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                   </div>
                 </div>
                 <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
                   <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
                 </div>
-                <p class="g-text">"מרצה ברמה גבוהה ביותר! למדתי המון מהשיעורים שלך — גם ברמה המקצועית וגם ברמה האישית. הסברים ברורים, תשובות מהירות ויחס אנושי אמיתי. 10 מתוך 10!"</p>
+                <p class="g-text">הגעתי עם רעיון מעורפל לעגילים לחתונה — ויצאתי עם תכשיט מושלם שכל אורחת שאלה עליו. שלומי הבין בדיוק מה אני רוצה אפילו לפני שידעתי בעצמי. מקצועיות ברמה אחרת לגמרי ✨</p>
               </article>
 
               <!-- Card 6 -->
               <article class="g-card" aria-label="ביקורת של יוסי ברק">
                 <div class="g-card-top">
                   <div class="g-reviewer">
-                    <div class="g-avatar">
-                      <img src="https://api.dicebear.com/8.x/lorelei/svg?seed=yossi&backgroundColor=c0f0d4" alt="תמונת פרופיל של יוסי ברק" width="42" height="42" loading="lazy" />
-                    </div>
+                    <div class="g-avatar g-avatar-initials" style="background:#0F9D58" aria-hidden="true">י</div>
                     <div>
                       <div class="g-name">יוסי ברק</div>
-                      <div class="g-date">לפני 5 ימים</div>
+                      <div class="g-meta"><span class="g-reviews-count">7 ביקורות</span> · <span class="g-date">לפני 5 ימים</span></div>
                     </div>
                   </div>
                   <div class="g-logo" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                   </div>
                 </div>
                 <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
                   <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
                 </div>
-                <p class="g-text">"המרצים שולמדים את החומר, מעבירים אותו בצורה ברורה ומאפשרים לנו לנשום — גורמים לנו להתאהב בתחום. לא חשבתי שאוכל להבין כל כך מהר. קידום מהיר ומקצועי."</p>
+                <p class="g-text">הזמנתי שרשרת זהב לאמא שלי ליום ההולדת ה-70. שלומי עזר לי לבחור את הסגנון הנכון, הוסיף חריטה אישית, והתוצאה הייתה מרגשת להפליא. האמא שלי לא מסירה אותה מאז 🏅</p>
               </article>
 
             </div><!-- /track -->
