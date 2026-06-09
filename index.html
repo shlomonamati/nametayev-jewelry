@@ -278,27 +278,31 @@
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 2rem;
+      gap: 0.4rem;
       align-items: center;
     }
     .nav-links a {
-      color: var(--text-muted);
+      color: rgba(237,229,213,0.7);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 400;
-      transition: color 0.3s;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      border: 1px solid transparent;
+      transition: color 0.25s, background 0.25s, border-color 0.25s;
       position: relative;
     }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; right: 0;
-      width: 0; height: 1px;
-      background: var(--gold);
-      transition: width 0.3s;
+    .nav-links a:hover {
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.08);
+      border-color: rgba(201,168,76,0.22);
     }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active {
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+      border-color: rgba(201,168,76,0.3);
+    }
 
     /* hamburger */
     .hamburger {
@@ -2697,6 +2701,20 @@ window.addEventListener('scroll', () => {
   const nav = document.getElementById('main-nav');
   if (nav) nav.classList.toggle('scrolled', window.scrollY > 60);
 });
+
+/* ── NAV ACTIVE LINK ── */
+(function() {
+  const sections = ['services','process','testimonials','contact'].map(id => document.getElementById(id)).filter(Boolean);
+  const links = document.querySelectorAll('.nav-links a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => obs.observe(s));
+})();
 
 /* ── INTERSECTION OBSERVER: Reveal ── */
 const revealObs = new IntersectionObserver(entries => {
