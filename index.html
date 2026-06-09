@@ -622,59 +622,76 @@
     .btn-primary {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      background: linear-gradient(135deg, var(--gold-light), var(--gold));
-      color: var(--black);
+      gap: 0.7rem;
+      background: linear-gradient(135deg, #E8C96A 0%, #C9A84C 50%, #A8873A 100%);
+      color: #0D0B07;
       font-family: 'Heebo', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 0.95rem 2.2rem;
+      font-size: 0.92rem;
+      font-weight: 800;
+      padding: 1.05rem 2.6rem;
       border: none;
-      border-radius: 4px;
+      border-radius: 50px;
       cursor: pointer;
       text-decoration: none;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       position: relative;
       overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.3s;
-      box-shadow: 0 4px 30px rgba(201,168,76,0.3);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+      box-shadow: 0 6px 35px rgba(201,168,76,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
     }
     .btn-primary::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      background: linear-gradient(135deg, #fff3 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.3s;
+      border-radius: inherit;
     }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(201,168,76,0.5); }
+    .btn-primary:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 14px 50px rgba(201,168,76,0.6), inset 0 1px 0 rgba(255,255,255,0.25); }
     .btn-primary:hover::before { opacity: 1; }
     .btn-primary span { position: relative; z-index: 1; }
-    .btn-primary:active { transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(-1px) scale(0.99); }
 
     .btn-outline {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      background: transparent;
-      color: var(--gold);
+      gap: 0.7rem;
+      background: rgba(201,168,76,0.04);
+      color: var(--gold-light);
       font-family: 'Heebo', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 0.95rem 2.2rem;
-      border: 1px solid rgba(201,168,76,0.4);
-      border-radius: 4px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 1.05rem 2.6rem;
+      border: 1px solid rgba(201,168,76,0.45);
+      border-radius: 50px;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.3s;
-      backdrop-filter: blur(4px);
-      background: rgba(201,168,76,0.03);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-outline::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.12), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: inherit;
     }
     .btn-outline:hover {
       background: rgba(201,168,76,0.1);
       border-color: var(--gold);
-      transform: translateY(-3px);
+      color: #fff;
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.2);
     }
+    .btn-outline:hover::after { opacity: 1; }
 
     /* ── SECTIONS ── */
     section { padding: 7rem 5%; }
@@ -2889,21 +2906,20 @@ function announce(msg) {
   const dotsBox = document.getElementById('rev-dots');
   if (!track) return;
 
+  const wrap  = track.parentElement; // rev-track-wrap
   const cards = Array.from(track.querySelectorAll('.g-card'));
   const total = cards.length;
-  let cur = 0;
-  let auto;
+  let cur = 0, auto;
 
-  function visible() {
-    return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+  function vis() {
+    return window.innerWidth <= 900 ? 2 : 3;
   }
-  function max() { return Math.max(0, total - visible()); }
+  function maxIdx() { return Math.max(0, total - vis()); }
 
-  // Build dots
   function buildDots() {
+    if (!dotsBox) return;
     dotsBox.innerHTML = '';
-    const m = max();
-    for (let i = 0; i <= m; i++) {
+    for (let i = 0; i <= maxIdx(); i++) {
       const d = document.createElement('button');
       d.className = 'rev-dot' + (i === 0 ? ' active' : '');
       d.setAttribute('aria-label', 'ביקורת ' + (i + 1));
@@ -2913,59 +2929,42 @@ function announce(msg) {
   }
 
   function goTo(idx) {
-    cur = Math.max(0, Math.min(idx, max()));
-    // Use CSS var for gap (1.2rem = 19.2px at 16px base)
-    const gap = parseFloat(getComputedStyle(track).gap) || 19;
-    const cardW = cards[0].getBoundingClientRect().width;
-    if (cardW > 0) {
-      track.style.transform = 'translateX(-' + (cur * (cardW + gap)) + 'px)';
-    }
+    cur = Math.max(0, Math.min(idx, maxIdx()));
+    const card  = cards[cur];
+    const gap   = parseFloat(getComputedStyle(track).gap) || 19;
+    const cardW = card.offsetWidth;
+    track.style.transform = 'translateX(-' + (cur * (cardW + gap)) + 'px)';
     if (btnPrev) btnPrev.disabled = cur === 0;
-    if (btnNext) btnNext.disabled = cur >= max();
-    dotsBox.querySelectorAll('.rev-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+    if (btnNext) btnNext.disabled = cur >= maxIdx();
+    if (dotsBox) dotsBox.querySelectorAll('.rev-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
   }
 
   function startAuto() {
     clearInterval(auto);
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      auto = setInterval(() => goTo(cur >= max() ? 0 : cur + 1), 4500);
-    }
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+      auto = setInterval(() => goTo(cur >= maxIdx() ? 0 : cur + 1), 4500);
   }
 
   if (btnPrev) btnPrev.addEventListener('click', () => { goTo(cur - 1); startAuto(); });
   if (btnNext) btnNext.addEventListener('click', () => { goTo(cur + 1); startAuto(); });
 
-  // Swipe
   let tx = 0;
   track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
+  track.addEventListener('touchend',   e => {
     const dx = tx - e.changedTouches[0].clientX;
     if (Math.abs(dx) > 40) { goTo(dx > 0 ? cur + 1 : cur - 1); startAuto(); }
   });
 
-  // Pause on hover
   track.parentElement.addEventListener('mouseenter', () => clearInterval(auto));
   track.parentElement.addEventListener('mouseleave', startAuto);
 
-  // Rebuild on resize
   let rt;
   window.addEventListener('resize', () => {
     clearTimeout(rt);
-    rt = setTimeout(() => { buildDots(); goTo(Math.min(cur, max())); }, 200);
+    rt = setTimeout(() => { buildDots(); goTo(Math.min(cur, maxIdx())); }, 200);
   });
 
-  // Wait for fonts/layout before init
-  function init() {
-    buildDots();
-    goTo(0);
-    startAuto();
-  }
-
-  if (document.readyState === 'complete') {
-    init();
-  } else {
-    window.addEventListener('load', init);
-  }
+  window.addEventListener('load', () => { buildDots(); goTo(0); startAuto(); });
 })();
 
 /* ── ACCESSIBILITY WIDGET ── */
