@@ -823,235 +823,118 @@
     .step h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
     .step p { color: var(--text-muted); font-size: 0.83rem; line-height: 1.7; }
 
-    /* ── TESTIMONIALS / GOOGLE CAROUSEL ── */
+    /* ── TESTIMONIALS ── */
     #testimonials { background: var(--dark); }
 
-    .reviews-wrapper {
-      max-width: 1120px;
+    .reviews-box {
+      max-width: 1100px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2.5rem;
-      align-items: center;
+      padding: 0 1rem;
     }
 
-    /* Carousel track */
-    .carousel-outer {
-      position: relative;
-      overflow: hidden;
-    }
-    .carousel-track-wrap {
-      overflow: hidden;
-      border-radius: 14px;
-    }
-    .carousel-track-wrap {
-      perspective: 1200px;
-    }
-    .carousel-track {
-      display: flex;
-      gap: 1.2rem;
-      transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
-      will-change: transform;
-    }
-    .g-card {
-      transform-style: preserve-3d;
-      transition: transform 0.4s ease, box-shadow 0.3s, opacity 0.4s;
-    }
-    .g-card.side-card {
-      opacity: 0.72;
-      transform: perspective(900px) rotateY(6deg) scale(0.96);
-    }
-    .g-card.side-card-left {
-      transform: perspective(900px) rotateY(-6deg) scale(0.96);
-    }
-    .g-card.center-card {
-      opacity: 1;
-      transform: perspective(900px) rotateY(0deg) scale(1.02);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.28);
-    }
-
-    /* Google review card */
-    .g-card {
-      flex: 0 0 calc(33.333% - 0.8rem);
-      min-width: 260px;
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.4rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      position: relative;
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
-    .g-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.3); transform: translateY(-3px); }
-
-    .g-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .g-reviewer {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-    .g-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: #eee;
-    }
-    .g-avatar img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .g-avatar-initials {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      flex-shrink: 0;
+    /* Google badge strip */
+    .g-badge-strip {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 700;
-      font-family: 'Heebo', sans-serif;
-      letter-spacing: 0;
-      user-select: none;
+      gap: 1rem;
+      background: #fff;
+      border-radius: 14px;
+      padding: 1rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+      flex-wrap: wrap;
     }
-    .g-meta {
-      font-size: 0.72rem;
-      color: #888;
-      margin-top: 1px;
+    .g-badge-strip .g-badge-score {
+      font-size: 2rem; font-weight: 900; color: #202124;
     }
-    .g-reviews-count { color: #5f6368; font-weight: 500; }
-    .g-name { font-size: 0.88rem; font-weight: 700; color: #202124; line-height: 1.2; }
-    .g-date { font-size: 0.72rem; color: #999; }
+    .g-badge-strip .g-badge-stars { color: #fbbc04; font-size: 1.3rem; letter-spacing: 2px; }
+    .g-badge-strip .g-badge-info { font-size: 0.8rem; color: #70757a; }
+    .g-badge-strip .g-badge-name-b { font-size: 0.95rem; font-weight: 800; color: #202124; }
 
-    /* Google G logo */
-    .g-logo {
-      flex-shrink: 0;
+    /* Slider */
+    .rev-slider {
+      position: relative;
     }
-
-    .g-stars {
-      display: flex;
-      gap: 2px;
-    }
-    .g-star {
-      width: 16px; height: 16px;
-      color: #fbbc04;
-      font-size: 15px;
-      line-height: 1;
-    }
-
-    .g-text {
-      font-size: 0.85rem;
-      color: #3c4043;
-      line-height: 1.7;
-      flex: 1;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
+    .rev-track-wrap {
       overflow: hidden;
+      border-radius: 14px;
     }
-    .g-text.expanded { -webkit-line-clamp: unset; }
+    .rev-track {
+      display: flex;
+      gap: 1.2rem;
+      transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
 
-    .g-more {
-      background: none;
-      border: none;
-      color: #1a73e8;
-      font-size: 0.78rem;
-      cursor: pointer;
-      padding: 0;
+    /* Card */
+    .g-card {
+      flex: 0 0 calc(33.333% - 0.85rem);
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.4rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .g-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.2); transform: translateY(-3px); }
+
+    .g-card-top { display: flex; align-items: center; justify-content: space-between; }
+    .g-reviewer  { display: flex; align-items: center; gap: 0.7rem; }
+
+    .g-avatar-initials {
+      width: 44px; height: 44px;
+      border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.15rem; font-weight: 800;
       font-family: 'Heebo', sans-serif;
-      text-align: right;
-      align-self: flex-start;
     }
-    .g-more:focus-visible { outline: var(--focus-ring); border-radius: 2px; }
+    .g-name  { font-size: 0.9rem; font-weight: 700; color: #202124; }
+    .g-meta  { font-size: 0.72rem; color: #888; margin-top: 2px; }
+    .g-stars { color: #fbbc04; font-size: 1rem; letter-spacing: 1px; }
+    .g-text  { font-size: 0.87rem; color: #3c4043; line-height: 1.7; flex: 1; }
 
-    /* Arrow buttons */
-    .carousel-arrow {
+    /* Nav buttons */
+    .rev-btn {
       position: absolute;
       top: 50%; transform: translateY(-50%);
       z-index: 10;
-      width: 40px; height: 40px;
+      width: 44px; height: 44px;
       border-radius: 50%;
       background: #fff;
       border: none;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
       color: #5f6368;
-      transition: box-shadow 0.2s, background 0.2s;
+      transition: box-shadow 0.2s;
     }
-    .carousel-arrow:hover { background: #f8f9fa; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-    .carousel-arrow:focus-visible { outline: var(--focus-ring); }
-    .carousel-arrow:disabled { opacity: 0.3; cursor: default; }
-    .carousel-prev { right: -20px; }
-    .carousel-next { left: -20px; }
+    .rev-btn:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+    .rev-btn:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+    .rev-prev { right: -22px; }
+    .rev-next { left: -22px; }
 
     /* Dots */
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 1.4rem;
+    .rev-dots {
+      display: flex; justify-content: center; gap: 7px; margin-top: 1.6rem;
     }
-    .c-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: rgba(201,168,76,0.25);
-      border: none;
-      cursor: pointer;
-      padding: 0;
+    .rev-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: rgba(201,168,76,0.3); border: none; cursor: pointer; padding: 0;
       transition: all 0.3s;
     }
-    .c-dot.active { background: var(--gold); width: 22px; border-radius: 4px; }
-    .c-dot:focus-visible { outline: var(--focus-ring); }
-
-    /* Google badge (right panel) */
-    .g-badge {
-      width: 200px;
-      background: #fff;
-      border-radius: 14px;
-      padding: 1.4rem 1.2rem;
-      text-align: center;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .g-badge-icon { font-size: 2.4rem; }
-    .g-badge-name { font-size: 0.85rem; font-weight: 800; color: #202124; line-height: 1.3; }
-    .g-badge-cat { font-size: 0.72rem; color: #70757a; }
-    .g-badge-stars { display: flex; gap: 2px; justify-content: center; }
-    .g-badge-score { font-size: 1.6rem; font-weight: 800; color: #202124; }
-    .g-badge-count { font-size: 0.72rem; color: #70757a; }
-    .g-badge-divider { width: 80%; height: 1px; background: #e8eaed; }
-    .g-badge-powered {
-      display: flex; align-items: center; gap: 0.4rem;
-      font-size: 0.7rem; color: #70757a;
-    }
+    .rev-dot.active { background: var(--gold); width: 24px; border-radius: 5px; }
 
     @media (max-width: 900px) {
-      .reviews-wrapper { grid-template-columns: 1fr; }
-      .g-badge { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 1rem; }
       .g-card { flex: 0 0 calc(50% - 0.6rem); }
+      .rev-prev { right: -14px; }
+      .rev-next { left: -14px; }
     }
     @media (max-width: 600px) {
-      .g-card { flex: 0 0 90vw; min-width: 0; }
-      .carousel-track-wrap { overflow: visible; }
-      .carousel-outer { overflow: hidden; padding: 0 1rem; }
-      .carousel-prev { right: 0; }
-      .carousel-next { left: 0; }
-      .carousel-arrow { width: 36px; height: 36px; font-size: 0.9rem; top: auto; bottom: -48px; transform: none; }
-      .carousel-dots { margin-top: 56px; }
+      .g-card { flex: 0 0 85vw; }
+      .rev-prev { right: 4px; }
+      .rev-next { left: 4px; }
     }
 
     /* WhatsApp כפתור צף */
@@ -2179,176 +2062,134 @@
       <div class="divider" aria-hidden="true"></div>
     </div>
 
-    <div class="reviews-wrapper">
+    <div class="reviews-box">
 
-      <!-- Carousel -->
-      <div>
-        <div class="carousel-outer" role="region" aria-label="ביקורות לקוחות" aria-roledescription="carousel">
-
-          <button class="carousel-arrow carousel-prev" id="car-prev" aria-label="ביקורות קודמות" disabled>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-
-          <div class="carousel-track-wrap">
-            <div class="carousel-track" id="car-track" aria-live="polite">
-
-              <!-- Card 1 -->
-              <article class="g-card" aria-label="ביקורת של מיכל כהן">
-                <div class="g-card-top">
-                  <div class="g-reviewer">
-                    <div class="g-avatar g-avatar-initials" style="background:#E8704A" aria-hidden="true">מ</div>
-                    <div>
-                      <div class="g-name">מיכל כהן</div>
-                      <div class="g-meta"><span class="g-reviews-count">12 ביקורות</span> · <span class="g-date">לפני חודש</span></div>
-                    </div>
-                  </div>
-                  <div class="g-logo" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                  </div>
-                </div>
-                <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
-                  <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
-                </div>
-                <p class="g-text">הטבעת שקיבלתי הייתה מעבר לכל דמיון. הם הקשיבו לכל פרט ויצרו משהו שהוא בדיוק אני. חתני נרגש כמוני ביום ההצעה. שירות מדהים מתחילת ועד סוף, ממליצה בחום לכל אחד שמחפש תכשיט אמיתי ❤️</p>
-              </article>
-
-              <!-- Card 2 -->
-              <article class="g-card" aria-label="ביקורת של דנה לוי">
-                <div class="g-card-top">
-                  <div class="g-reviewer">
-                    <div class="g-avatar g-avatar-initials" style="background:#4285F4" aria-hidden="true">ד</div>
-                    <div>
-                      <div class="g-name">דנה לוי</div>
-                      <div class="g-meta"><span class="g-reviews-count">5 ביקורות</span> · <span class="g-date">לפני שבועיים</span></div>
-                    </div>
-                  </div>
-                  <div class="g-logo" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                  </div>
-                </div>
-                <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
-                  <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
-                </div>
-                <p class="g-text">הזמנתי שרשרת עם שם הבת שלי לבת-המצווה. הפכה לתכשיט הכי אהוב עליה. האיכות והעיצוב — פשוט מושלמים. תוך יומיים קיבלתי תכשיט שנראה כאילו הגיע מחנות יוקרתית בחו״ל 🙌</p>
-              </article>
-
-              <!-- Card 3 -->
-              <article class="g-card" aria-label="ביקורת של רונית שמיר">
-                <div class="g-card-top">
-                  <div class="g-reviewer">
-                    <div class="g-avatar g-avatar-initials" style="background:#34A853" aria-hidden="true">ר</div>
-                    <div>
-                      <div class="g-name">רונית שמיר</div>
-                      <div class="g-meta"><span class="g-reviews-count">8 ביקורות</span> · <span class="g-date">לפני 3 ימים</span></div>
-                    </div>
-                  </div>
-                  <div class="g-logo" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                  </div>
-                </div>
-                <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
-                  <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
-                </div>
-                <p class="g-text">הזמנתי טבעת אירוסין וקיבלתי אותה מהר ממה שציפיתי — בלי לוותר על שום פרט. הייתי בהלם מהמהירות ומהדיוק. בן הזוג שלי לא האמין שאפשר לייצר משהו כל כך מושלם בזמן קצר 💎</p>
-              </article>
-
-              <!-- Card 4 -->
-              <article class="g-card" aria-label="ביקורת של אבי מזרחי">
-                <div class="g-card-top">
-                  <div class="g-reviewer">
-                    <div class="g-avatar g-avatar-initials" style="background:#7B5EA7" aria-hidden="true">א</div>
-                    <div>
-                      <div class="g-name">אבי מזרחי</div>
-                      <div class="g-meta"><span class="g-reviews-count">3 ביקורות</span> · <span class="g-date">לפני חודשיים</span></div>
-                    </div>
-                  </div>
-                  <div class="g-logo" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                  </div>
-                </div>
-                <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
-                  <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
-                </div>
-                <p class="g-text">קניתי צמיד זהב לאשתי ליום הנישואין. היא בכתה מרוב שמחה. העיצוב מדויק, הזהב אמיתי, והשירות האישי הרגיש כמו קניה בבוטיק יוקרה באירופה. בהחלט נחזור! 🥹</p>
-              </article>
-
-              <!-- Card 5 -->
-              <article class="g-card" aria-label="ביקורת של שרה גולדברג">
-                <div class="g-card-top">
-                  <div class="g-reviewer">
-                    <div class="g-avatar g-avatar-initials" style="background:#F4B400" aria-hidden="true">ש</div>
-                    <div>
-                      <div class="g-name">שרה גולדברג</div>
-                      <div class="g-meta"><span class="g-reviews-count">21 ביקורות</span> · <span class="g-date">לפני שבוע</span></div>
-                    </div>
-                  </div>
-                  <div class="g-logo" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                  </div>
-                </div>
-                <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
-                  <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
-                </div>
-                <p class="g-text">הגעתי עם רעיון מעורפל לעגילים לחתונה — ויצאתי עם תכשיט מושלם שכל אורחת שאלה עליו. שלומי הבין בדיוק מה אני רוצה אפילו לפני שידעתי בעצמי. מקצועיות ברמה אחרת לגמרי ✨</p>
-              </article>
-
-              <!-- Card 6 -->
-              <article class="g-card" aria-label="ביקורת של יוסי ברק">
-                <div class="g-card-top">
-                  <div class="g-reviewer">
-                    <div class="g-avatar g-avatar-initials" style="background:#0F9D58" aria-hidden="true">י</div>
-                    <div>
-                      <div class="g-name">יוסי ברק</div>
-                      <div class="g-meta"><span class="g-reviews-count">7 ביקורות</span> · <span class="g-date">לפני 5 ימים</span></div>
-                    </div>
-                  </div>
-                  <div class="g-logo" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                  </div>
-                </div>
-                <div class="g-stars" role="img" aria-label="דירוג 5 כוכבים">
-                  <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
-                </div>
-                <p class="g-text">הזמנתי שרשרת זהב לאמא שלי ליום ההולדת ה-70. שלומי עזר לי לבחור את הסגנון הנכון, הוסיף חריטה אישית, והתוצאה הייתה מרגשת להפליא. האמא שלי לא מסירה אותה מאז 🏅</p>
-              </article>
-
-            </div><!-- /track -->
-          </div>
-
-          <button class="carousel-arrow carousel-next" id="car-next" aria-label="ביקורות הבאות">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-
-        </div><!-- /carousel-outer -->
-
-        <!-- Dots -->
-        <div class="carousel-dots" role="tablist" aria-label="בחר ביקורת">
-          <button class="c-dot active" role="tab" aria-selected="true"  aria-label="קבוצה 1" data-dot="0"></button>
-          <button class="c-dot"        role="tab" aria-selected="false" aria-label="קבוצה 2" data-dot="1"></button>
-          <button class="c-dot"        role="tab" aria-selected="false" aria-label="קבוצה 3" data-dot="2"></button>
-          <button class="c-dot"        role="tab" aria-selected="false" aria-label="קבוצה 4" data-dot="3"></button>
+      <!-- Google Badge Strip -->
+      <div class="g-badge-strip">
+        <div>
+          <div class="g-badge-name-b">נמטייב תכשיטים</div>
+          <div class="g-badge-info">הבורסה, רמת גן</div>
         </div>
+        <div class="g-badge-score">5.0</div>
+        <div>
+          <div class="g-badge-stars">★★★★★</div>
+          <div class="g-badge-info">26 ביקורות בגוגל</div>
+        </div>
+        <svg width="60" height="22" viewBox="0 0 272 92" aria-label="Google">
+          <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/><path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/><path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/><path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/><path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/><path d="M35.29 41.41V32h31.91c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.74.36 15.59 16.32.13 35.5.13c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.66l-22.49.04z" fill="#4285F4"/>
+        </svg>
       </div>
 
-      <!-- Google Badge -->
-      <aside class="g-badge" aria-label="דירוג גוגל של נמטייב תכשיטים">
-        <div class="g-badge-icon" role="img" aria-label="חנות תכשיטים">💍</div>
-        <div class="g-badge-name">נמטייב תכשיטים</div>
-        <div class="g-badge-cat">חנות תכשיטים · הבורסה, רמת גן</div>
-        <div class="g-badge-score" aria-label="ציון 5.0">5.0</div>
-        <div class="g-badge-stars" role="img" aria-label="5 כוכבים">
-          <span style="color:#fbbc04;font-size:1.3rem">★★★★★</span>
-        </div>
-        <div class="g-badge-count">מבוסס על 26 ביקורות</div>
-        <div class="g-badge-divider" aria-hidden="true"></div>
-        <div class="g-badge-powered" aria-label="מופעל על ידי Google">
-          <span style="font-size:0.7rem">powered by</span>
-          <svg width="44" height="16" viewBox="0 0 272 92" aria-label="Google" role="img">
-            <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/><path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/><path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/><path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/><path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/><path d="M35.29 41.41V32h31.91c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.74.36 15.59 16.32.13 35.5.13c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.66l-22.49.04z" fill="#4285F4"/></svg>
-        </div>
-      </aside>
+      <!-- Slider -->
+      <div class="rev-slider" id="rev-slider">
+        <button class="rev-btn rev-prev" id="rev-prev" aria-label="הקודם" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
 
-    </div><!-- /reviews-wrapper -->
+        <div class="rev-track-wrap">
+          <div class="rev-track" id="rev-track">
+
+            <article class="g-card">
+              <div class="g-card-top">
+                <div class="g-reviewer">
+                  <div class="g-avatar-initials" style="background:#E8704A">מ</div>
+                  <div>
+                    <div class="g-name">מיכל כהן</div>
+                    <div class="g-meta">12 ביקורות · לפני חודש</div>
+                  </div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              </div>
+              <div class="g-stars">★★★★★</div>
+              <p class="g-text">הטבעת שקיבלתי הייתה מעבר לכל דמיון. הקשיבו לכל פרט ויצרו משהו שהוא בדיוק אני. חתני נרגש כמוני ביום ההצעה. שירות מדהים מתחילת ועד סוף ❤️</p>
+            </article>
+
+            <article class="g-card">
+              <div class="g-card-top">
+                <div class="g-reviewer">
+                  <div class="g-avatar-initials" style="background:#4285F4">ד</div>
+                  <div>
+                    <div class="g-name">דנה לוי</div>
+                    <div class="g-meta">5 ביקורות · לפני שבועיים</div>
+                  </div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              </div>
+              <div class="g-stars">★★★★★</div>
+              <p class="g-text">הזמנתי שרשרת עם שם הבת שלי לבת-המצווה. הפכה לתכשיט הכי אהוב עליה. האיכות והעיצוב פשוט מושלמים — נראה כאילו הגיע מחנות יוקרתית בחו״ל 🙌</p>
+            </article>
+
+            <article class="g-card">
+              <div class="g-card-top">
+                <div class="g-reviewer">
+                  <div class="g-avatar-initials" style="background:#34A853">ר</div>
+                  <div>
+                    <div class="g-name">רונית שמיר</div>
+                    <div class="g-meta">8 ביקורות · לפני 3 ימים</div>
+                  </div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              </div>
+              <div class="g-stars">★★★★★</div>
+              <p class="g-text">הזמנתי טבעת אירוסין וקיבלתי אותה מהר ממה שציפיתי — בלי לוותר על שום פרט. הייתי בהלם מהמהירות ומהדיוק. בן הזוג שלי לא האמין 💎</p>
+            </article>
+
+            <article class="g-card">
+              <div class="g-card-top">
+                <div class="g-reviewer">
+                  <div class="g-avatar-initials" style="background:#7B5EA7">א</div>
+                  <div>
+                    <div class="g-name">אבי מזרחי</div>
+                    <div class="g-meta">3 ביקורות · לפני חודשיים</div>
+                  </div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              </div>
+              <div class="g-stars">★★★★★</div>
+              <p class="g-text">קניתי צמיד זהב לאשתי ליום הנישואין. היא בכתה מרוב שמחה. העיצוב מדויק, הזהב אמיתי, והשירות האישי הרגיש כמו בוטיק יוקרה באירופה. נחזור בהחלט! 🥹</p>
+            </article>
+
+            <article class="g-card">
+              <div class="g-card-top">
+                <div class="g-reviewer">
+                  <div class="g-avatar-initials" style="background:#F4B400">ש</div>
+                  <div>
+                    <div class="g-name">שרה גולדברג</div>
+                    <div class="g-meta">21 ביקורות · לפני שבוע</div>
+                  </div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              </div>
+              <div class="g-stars">★★★★★</div>
+              <p class="g-text">הגעתי עם רעיון מעורפל לעגילים לחתונה ויצאתי עם תכשיט מושלם שכל אורחת שאלה עליו. שלומי הבין בדיוק מה אני רוצה אפילו לפני שידעתי בעצמי ✨</p>
+            </article>
+
+            <article class="g-card">
+              <div class="g-card-top">
+                <div class="g-reviewer">
+                  <div class="g-avatar-initials" style="background:#0F9D58">י</div>
+                  <div>
+                    <div class="g-name">יוסי ברק</div>
+                    <div class="g-meta">7 ביקורות · לפני 5 ימים</div>
+                  </div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              </div>
+              <div class="g-stars">★★★★★</div>
+              <p class="g-text">הזמנתי שרשרת זהב לאמא שלי ליום ההולדת ה-70. שלומי עזר לי לבחור את הסגנון, הוסיף חריטה אישית, והתוצאה הייתה מרגשת להפליא. האמא שלי לא מסירה אותה מאז 🏅</p>
+            </article>
+
+          </div>
+        </div>
+
+        <button class="rev-btn rev-next" id="rev-next" aria-label="הבא">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="rev-dots" id="rev-dots"></div>
+
+    </div><!-- /reviews-box -->
   </section>
 
   <!-- CONTACT -->
@@ -2948,129 +2789,84 @@ function announce(msg) {
   if (el) { el.textContent = ''; setTimeout(() => { el.textContent = msg; }, 50); }
 }
 
-/* ── GOOGLE REVIEWS CAROUSEL ── */
+/* ── REVIEWS SLIDER ── */
 (function() {
-  const track    = document.getElementById('car-track');
-  const btnPrev  = document.getElementById('car-prev');
-  const btnNext  = document.getElementById('car-next');
-  const dots     = document.querySelectorAll('.c-dot');
-  if (!track || !btnPrev || !btnNext) return;
+  const track   = document.getElementById('rev-track');
+  const btnPrev = document.getElementById('rev-prev');
+  const btnNext = document.getElementById('rev-next');
+  const dotsBox = document.getElementById('rev-dots');
+  if (!track) return;
 
-  const cards        = track.querySelectorAll('.g-card');
-  const totalCards   = cards.length;
-  let visibleCount   = getVisible();
-  let currentIndex   = 0;
-  let autoTimer      = null;
+  const cards = Array.from(track.querySelectorAll('.g-card'));
+  const total = cards.length;
+  let cur = 0;
+  let auto;
 
-  function getVisible() {
+  function visible() {
     return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
   }
+  function max() { return Math.max(0, total - visible()); }
 
-  function maxIndex() {
-    return Math.max(0, totalCards - visibleCount);
+  function setWidths() {
+    const gap = 19; // 1.2rem ≈ 19px
+    const w = (track.parentElement.offsetWidth - gap * (visible() - 1)) / visible();
+    cards.forEach(c => c.style.flex = '0 0 ' + w + 'px');
   }
 
-  function setCardWidth() {
-    visibleCount = getVisible();
-    const gap = 1.2 * 16; // 1.2rem in px
-    const trackW = track.parentElement.offsetWidth;
-    const w = (trackW - gap * (visibleCount - 1)) / visibleCount;
-    cards.forEach(c => { c.style.flex = `0 0 ${w}px`; });
+  // Build dots
+  function buildDots() {
+    dotsBox.innerHTML = '';
+    for (let i = 0; i <= max(); i++) {
+      const d = document.createElement('button');
+      d.className = 'rev-dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsBox.appendChild(d);
+    }
   }
 
-  function update3D() {
-    const mid = currentIndex + Math.floor(visibleCount / 2);
-    cards.forEach((c, i) => {
-      c.classList.remove('side-card', 'side-card-left', 'center-card');
-      if (visibleCount < 2) return;
-      if (i === mid) c.classList.add('center-card');
-      else if (i > mid) c.classList.add('side-card');
-      else if (i < mid && i >= currentIndex) c.classList.add('side-card-left');
-    });
-  }
-
-  function goTo(idx, animate = true) {
-    visibleCount = getVisible();
-    currentIndex = Math.max(0, Math.min(idx, maxIndex()));
-
-    if (!animate) { track.style.transition = 'none'; }
-    const gap = 1.2 * 16;
-    const cardW = cards[0].getBoundingClientRect().width || 260;
-    // Negative X = moves track left = reveals next cards in LTR flex order
-    track.style.transform = `translateX(-${currentIndex * (cardW + gap)}px)`;
-    if (!animate) requestAnimationFrame(() => { track.style.transition = ''; });
-
-    btnPrev.disabled = currentIndex === 0;
-    btnNext.disabled = currentIndex >= maxIndex();
-
-    const totalDots = dots.length;
-    const dotIdx = Math.round((currentIndex / Math.max(1, maxIndex())) * (totalDots - 1));
-    dots.forEach((d, i) => {
-      const active = i === dotIdx;
-      d.classList.toggle('active', active);
-      d.setAttribute('aria-selected', active);
-    });
-
-    update3D();
-    announce(`ביקורות ${currentIndex + 1}–${Math.min(currentIndex + visibleCount, totalCards)} מתוך ${totalCards}`);
+  function goTo(idx) {
+    cur = Math.max(0, Math.min(idx, max()));
+    const gap = 19;
+    const cardW = cards[0].getBoundingClientRect().width;
+    track.style.transform = 'translateX(-' + (cur * (cardW + gap)) + 'px)';
+    if (btnPrev) btnPrev.disabled = cur === 0;
+    if (btnNext) btnNext.disabled = cur >= max();
+    dotsBox.querySelectorAll('.rev-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
   }
 
   function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(() => {
-      goTo(currentIndex >= maxIndex() ? 0 : currentIndex + 1);
-    }, 4000);
+    clearInterval(auto);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      auto = setInterval(() => goTo(cur >= max() ? 0 : cur + 1), 4500);
+    }
   }
 
-  function resetAuto() { startAuto(); }
+  if (btnPrev) btnPrev.addEventListener('click', () => { goTo(cur - 1); startAuto(); });
+  if (btnNext) btnNext.addEventListener('click', () => { goTo(cur + 1); startAuto(); });
 
-  // In RTL: right button = previous (earlier), left button = next (later)
-  btnPrev.addEventListener('click', () => { goTo(currentIndex - 1); resetAuto(); });
-  btnNext.addEventListener('click', () => { goTo(currentIndex + 1); resetAuto(); });
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const di = parseInt(dot.dataset.dot);
-      const target = Math.round((di / (dots.length - 1)) * maxIndex());
-      goTo(target);
-      resetAuto();
-    });
+  // Swipe
+  let tx = 0;
+  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   e => {
+    const dx = tx - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 40) { goTo(dx > 0 ? cur + 1 : cur - 1); startAuto(); }
   });
 
-  // Touch/swipe
-  let touchStartX = 0;
-  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const dx = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(dx) > 40) { goTo(dx > 0 ? currentIndex + 1 : currentIndex - 1); resetAuto(); }
-  });
-
-  // Keyboard on track
-  track.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft')  { goTo(currentIndex + 1); resetAuto(); e.preventDefault(); }
-    if (e.key === 'ArrowRight') { goTo(currentIndex - 1); resetAuto(); e.preventDefault(); }
-  });
-
-  // Pause auto on hover/focus
-  track.parentElement.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  // Pause on hover
+  track.parentElement.addEventListener('mouseenter', () => clearInterval(auto));
   track.parentElement.addEventListener('mouseleave', startAuto);
-  track.parentElement.addEventListener('focusin',  () => clearInterval(autoTimer));
-  track.parentElement.addEventListener('focusout', startAuto);
 
   // Resize
-  let resizeTimer;
+  let rt;
   window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => { setCardWidth(); goTo(currentIndex, false); }, 150);
+    clearTimeout(rt);
+    rt = setTimeout(() => { setWidths(); buildDots(); goTo(Math.min(cur, max())); }, 150);
   });
 
-  // Init
-  setCardWidth();
-  goTo(0, false);
+  setWidths();
+  buildDots();
+  goTo(0);
   startAuto();
-
-  // prefers-reduced-motion: disable auto
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) clearInterval(autoTimer);
 })();
 
 /* ── ACCESSIBILITY WIDGET ── */
