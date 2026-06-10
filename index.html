@@ -809,7 +809,7 @@
       background: linear-gradient(145deg, #1A1710 0%, #141210 100%);
       border: 1px solid rgba(201,168,76,0.13);
       border-radius: 20px;
-      padding: 2.8rem 2.2rem;
+      padding: 0;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -841,14 +841,39 @@
     .service-card:hover::before { opacity: 1; }
     .service-card:hover::after  { opacity: 1; }
 
-    .service-icon {
-      font-size: 2.8rem;
-      margin-bottom: 1.4rem;
-      display: block;
-      filter: drop-shadow(0 4px 16px rgba(201,168,76,0.25));
-      transition: transform 0.35s;
+    .service-photo {
+      position: relative;
+      height: 215px;
+      overflow: hidden;
+      background: #100E0A;
     }
-    .service-card:hover .service-icon { transform: scale(1.15) translateY(-4px); }
+    .service-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .service-card:hover .service-photo img { transform: scale(1.07); }
+    /* fade photo bottom into card background */
+    .service-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20,18,16,0) 55%, rgba(20,18,16,0.55) 85%, #161310 100%);
+      pointer-events: none;
+    }
+    /* thin gold line under photo */
+    .service-photo::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 20%; right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.55), transparent);
+      z-index: 1;
+    }
+
+    .service-body { padding: 1.8rem 2rem 2.4rem; }
 
     .service-card h3 {
       font-size: 1.2rem;
@@ -1701,36 +1726,83 @@
       <div class="divider" aria-hidden="true"></div>
     </div>
     <div class="portfolio-grid" role="list">
-
-      <article class="portfolio-item reveal" role="listitem" tabindex="0" aria-label="טבעת אובל מרכזית עם יהלומים">
+      <article class="portfolio-item reveal" role="listitem" tabindex="0" aria-label="טבעת האלו משובצת יהלומים">
         <img
-          src="images/ring-oval.jpg"
-          alt="טבעת אובל מרכזית עם יהלומים בעיצוב אישי"
-          width="600" height="450" loading="lazy"
+          src="images/portfolio-ring-halo.jpg"
+          alt="טבעת האלו זהב לבן משובצת יהלומים עגולים"
+          width="900" height="900" loading="lazy" decoding="async"
         />
         <div class="portfolio-overlay" aria-hidden="true">
-          <div class="portfolio-overlay-name">טבעת אובל מרכזית</div>
-          <div class="portfolio-overlay-cat">יהלומים בצדדים, זהב 18K</div>
+          <div class="portfolio-overlay-name">טבעת האלו יהלומים</div>
+          <div class="portfolio-overlay-cat">זהב לבן, שיבוץ עוטר</div>
         </div>
       </article>
 
-      <article class="portfolio-item reveal reveal-delay-1" role="listitem" tabindex="0" aria-label="טבעת מרקיזה — עיצוב ייחודי">
+      <article class="portfolio-item reveal reveal-delay-1" role="listitem" tabindex="0" aria-label="טבעת סוליטר אובל זהב">
         <img
-          src="images/ring-marquise.jpg"
-          alt="טבעת מרקיזה זהב בעיצוב אישי"
-          width="600" height="450" loading="lazy"
+          src="images/portfolio-ring-oval.jpg"
+          alt="טבעת סוליטר זהב צהוב עם יהלום אובל"
+          width="900" height="900" loading="lazy" decoding="async"
         />
         <div class="portfolio-overlay" aria-hidden="true">
-          <div class="portfolio-overlay-name">טבעת מרקיזה</div>
-          <div class="portfolio-overlay-cat">עיצוב ייחודי ומרהיב</div>
+          <div class="portfolio-overlay-name">טבעת סוליטר אובל</div>
+          <div class="portfolio-overlay-cat">זהב צהוב, יהלום מרכזי</div>
         </div>
       </article>
 
-      <article class="portfolio-item reveal reveal-delay-2" role="listitem" tabindex="0" aria-label="צמידי טניס — יהלומים מסביב">
+      <article class="portfolio-item reveal reveal-delay-2" role="listitem" tabindex="0" aria-label="עגילי טיפה תלויים על דוגמנית">
         <img
-          src="images/bracelets-tennis.jpg"
-          alt="צמידי טניס זהב עם יהלומים"
-          width="600" height="450" loading="lazy"
+          src="images/portfolio-earring-model.jpg"
+          alt="דוגמנית עונדת עגיל טיפה יהלום בזהב לבן"
+          width="900" height="900" loading="lazy" decoding="async"
+        />
+        <div class="portfolio-overlay" aria-hidden="true">
+          <div class="portfolio-overlay-name">עגילי טיפה תלויים</div>
+          <div class="portfolio-overlay-cat">יהלום אגס, זהב לבן</div>
+        </div>
+      </article>
+
+      <article class="portfolio-item reveal" role="listitem" tabindex="0" aria-label="עגילי יהלום בליטוש אגס">
+        <img
+          src="images/portfolio-earrings-pear.jpg"
+          alt="זוג עגילי יהלום כפולים בליטוש אגס"
+          width="900" height="900" loading="lazy" decoding="async"
+        />
+        <div class="portfolio-overlay" aria-hidden="true">
+          <div class="portfolio-overlay-name">עגילי יהלום טיפה</div>
+          <div class="portfolio-overlay-cat">ליטוש אגס, ברק יוצא דופן</div>
+        </div>
+      </article>
+
+      <article class="portfolio-item reveal reveal-delay-1" role="listitem" tabindex="0" aria-label="טבעת עם חריטת שם אישית">
+        <img
+          src="images/portfolio-ring-engraved.jpg"
+          alt="טבעת זהב עם חריטת שם ויהלום קטן"
+          width="900" height="900" loading="lazy" decoding="async"
+        />
+        <div class="portfolio-overlay" aria-hidden="true">
+          <div class="portfolio-overlay-name">טבעת חריטה אישית</div>
+          <div class="portfolio-overlay-cat">חריטת שם, זהב צהוב</div>
+        </div>
+      </article>
+
+      <article class="portfolio-item reveal reveal-delay-2" role="listitem" tabindex="0" aria-label="שרשרת תליון יהלום אובל">
+        <img
+          src="images/portfolio-necklace-pendant.jpg"
+          alt="שרשרת זהב צהוב עם תליון יהלום אובל"
+          width="900" height="900" loading="lazy" decoding="async"
+        />
+        <div class="portfolio-overlay" aria-hidden="true">
+          <div class="portfolio-overlay-name">שרשרת תליון אובל</div>
+          <div class="portfolio-overlay-cat">יהלום אובל, זהב צהוב</div>
+        </div>
+      </article>
+
+      <article class="portfolio-item reveal" role="listitem" tabindex="0" aria-label="צמידי טניס משובצים יהלומים">
+        <img
+          src="images/portfolio-bracelets-tennis.jpg"
+          alt="ארבעה צמידי טניס משובצים יהלומים בגדלים שונים"
+          width="900" height="900" loading="lazy" decoding="async"
         />
         <div class="portfolio-overlay" aria-hidden="true">
           <div class="portfolio-overlay-name">צמידי טניס</div>
@@ -1738,39 +1810,15 @@
         </div>
       </article>
 
-      <article class="portfolio-item reveal" role="listitem" tabindex="0" aria-label="שרשרת עם תליון טיפה">
+      <article class="portfolio-item reveal reveal-delay-1" role="listitem" tabindex="0" aria-label="צמיד זהב לגבר">
         <img
-          src="images/necklace-drop.jpg"
-          alt="שרשרת זהב עם תליון טיפה"
-          width="600" height="450" loading="lazy"
+          src="images/portfolio-bracelet-gold.jpg"
+          alt="צמיד חוליות לגבר בשילוב זהב צהוב ולבן"
+          width="900" height="900" loading="lazy" decoding="async"
         />
         <div class="portfolio-overlay" aria-hidden="true">
-          <div class="portfolio-overlay-name">שרשרת תליון טיפה</div>
-          <div class="portfolio-overlay-cat">עדינות ויוקרה בכל אירוע</div>
-        </div>
-      </article>
-
-      <article class="portfolio-item reveal reveal-delay-1" role="listitem" tabindex="0" aria-label="שתי טבעות — זוג מושלם">
-        <img
-          src="images/rings-two.jpg"
-          alt="שתי טבעות זהב בעיצוב אישי"
-          width="600" height="450" loading="lazy"
-        />
-        <div class="portfolio-overlay" aria-hidden="true">
-          <div class="portfolio-overlay-name">טבעות זוגיות</div>
-          <div class="portfolio-overlay-cat">הזוג המושלם לחיים</div>
-        </div>
-      </article>
-
-      <article class="portfolio-item reveal reveal-delay-2" role="listitem" tabindex="0" aria-label="עגיל טיפה עם יהלומים">
-        <img
-          src="images/earring-drop.jpg"
-          alt="עגיל טיפה זהב עם יהלומים"
-          width="600" height="450" loading="lazy"
-        />
-        <div class="portfolio-overlay" aria-hidden="true">
-          <div class="portfolio-overlay-name">עגיל טיפה</div>
-          <div class="portfolio-overlay-cat">יהלומים מנצנצים, מושלם לאירועים</div>
+          <div class="portfolio-overlay-name">צמיד זהב לגבר</div>
+          <div class="portfolio-overlay-cat">שילוב זהב צהוב ולבן</div>
         </div>
       </article>
 
@@ -1786,344 +1834,70 @@
       <div class="divider" aria-hidden="true"></div>
     </div>
     <div class="services-grid" role="list">
-
       <!-- טבעת אירוסין -->
       <article class="service-card reveal" role="listitem" tabindex="0" aria-label="טבעות אירוסין">
-        <div class="service-icon" role="img" aria-label="איור טבעת אירוסין עם יהלום">
-          <svg viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <defs>
-              <radialGradient id="rg-ring1" cx="40%" cy="35%" r="60%">
-                <stop offset="0%" stop-color="#F5E090"/>
-                <stop offset="40%" stop-color="#C9A84C"/>
-                <stop offset="100%" stop-color="#6B4F18"/>
-              </radialGradient>
-              <radialGradient id="rg-gem1" cx="35%" cy="25%" r="65%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="30%" stop-color="#b8e0ff"/>
-                <stop offset="70%" stop-color="#4488cc"/>
-                <stop offset="100%" stop-color="#1a3a6a"/>
-              </radialGradient>
-              <filter id="shadow1" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
-              </filter>
-              <linearGradient id="shine1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fff" stop-opacity="0.6"/>
-                <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <!-- Ring band -->
-            <ellipse cx="50" cy="68" rx="28" ry="10" fill="url(#rg-ring1)" filter="url(#shadow1)"/>
-            <ellipse cx="50" cy="68" rx="20" ry="5.5" fill="#1a1a1a"/>
-            <!-- Ring side left -->
-            <path d="M22 68 Q18 50 28 36" stroke="url(#rg-ring1)" stroke-width="7" fill="none" stroke-linecap="round"/>
-            <!-- Ring side right -->
-            <path d="M78 68 Q82 50 72 36" stroke="url(#rg-ring1)" stroke-width="7" fill="none" stroke-linecap="round"/>
-            <!-- Ring top band -->
-            <path d="M28 36 Q36 30 50 29 Q64 30 72 36" stroke="url(#rg-ring1)" stroke-width="7" fill="none" stroke-linecap="round"/>
-            <!-- Setting prongs -->
-            <rect x="44" y="22" width="4" height="9" rx="2" fill="#C9A84C"/>
-            <rect x="52" y="22" width="4" height="9" rx="2" fill="#C9A84C"/>
-            <!-- Diamond -->
-            <polygon points="50,10 60,20 50,32 40,20" fill="url(#rg-gem1)" filter="url(#shadow1)"/>
-            <polygon points="50,10 60,20 50,16" fill="#d0f0ff" opacity="0.8"/>
-            <polygon points="50,32 60,20 50,26" fill="#1a3a6a" opacity="0.7"/>
-            <polygon points="50,10 40,20 50,16" fill="#ffffff" opacity="0.5"/>
-            <!-- Shine on ring -->
-            <ellipse cx="38" cy="55" rx="5" ry="2" fill="url(#shine1)" transform="rotate(-30 38 55)"/>
-            <!-- Sparkle -->
-            <g fill="#F5E090" opacity="0.9">
-              <circle cx="68" cy="14" r="1.2"/>
-              <line x1="68" y1="10" x2="68" y2="18" stroke="#F5E090" stroke-width="0.8"/>
-              <line x1="64" y1="14" x2="72" y2="14" stroke="#F5E090" stroke-width="0.8"/>
-              <circle cx="80" cy="28" r="0.8"/>
-              <circle cx="22" cy="22" r="0.6"/>
-            </g>
-          </svg>
+        <div class="service-photo">
+          <img src="images/ring-oval.jpg" alt="טבעת אירוסין סוליטר מזהב צהוב עם יהלום אובל" loading="lazy" decoding="async" />
         </div>
-        <h3>טבעות אירוסין</h3>
-        <p>עיצוב טבעת חלומות בדיוק לפי רצונכם — בחירת אבן, מתכת וסגנון שיחד עם הסיפור שלכם.</p>
+        <div class="service-body">
+          <h3>טבעות אירוסין</h3>
+          <p>עיצוב טבעת חלומות בדיוק לפי רצונכם — בחירת אבן, מתכת וסגנון שיחד עם הסיפור שלכם.</p>
+        </div>
       </article>
 
-      <!-- שרשרת לאירועים -->
+      <!-- תכשיטים לאירועים -->
       <article class="service-card reveal reveal-delay-1" role="listitem" tabindex="0" aria-label="תכשיטים לאירועים">
-        <div class="service-icon" role="img" aria-label="איור שרשרת יוקרתית לאירוע">
-          <svg viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="chain-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#F5E090"/>
-                <stop offset="50%" stop-color="#C9A84C"/>
-                <stop offset="100%" stop-color="#7A5C1E"/>
-              </linearGradient>
-              <radialGradient id="pendant-rg" cx="35%" cy="30%" r="65%">
-                <stop offset="0%" stop-color="#F5E090"/>
-                <stop offset="50%" stop-color="#C9A84C"/>
-                <stop offset="100%" stop-color="#5A3E10"/>
-              </radialGradient>
-              <radialGradient id="ruby-rg" cx="30%" cy="25%" r="65%">
-                <stop offset="0%" stop-color="#ff9999"/>
-                <stop offset="50%" stop-color="#cc2222"/>
-                <stop offset="100%" stop-color="#660000"/>
-              </radialGradient>
-              <filter id="shadow2"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/></filter>
-            </defs>
-            <!-- Chain links - left side -->
-            <path d="M50 15 Q30 20 20 35 Q14 45 18 55" stroke="url(#chain-grad)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="4 2"/>
-            <!-- Chain links - right side -->
-            <path d="M50 15 Q70 20 80 35 Q86 45 82 55" stroke="url(#chain-grad)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="4 2"/>
-            <!-- Small chain links decoration -->
-            <ellipse cx="33" cy="27" rx="3" ry="1.8" fill="none" stroke="#C9A84C" stroke-width="1.5" transform="rotate(-35 33 27)"/>
-            <ellipse cx="25" cy="38" rx="3" ry="1.8" fill="none" stroke="#C9A84C" stroke-width="1.5" transform="rotate(-50 25 38)"/>
-            <ellipse cx="67" cy="27" rx="3" ry="1.8" fill="none" stroke="#C9A84C" stroke-width="1.5" transform="rotate(35 67 27)"/>
-            <ellipse cx="75" cy="38" rx="3" ry="1.8" fill="none" stroke="#C9A84C" stroke-width="1.5" transform="rotate(50 75 38)"/>
-            <!-- Pendant drop -->
-            <line x1="50" y1="55" x2="50" y2="60" stroke="url(#chain-grad)" stroke-width="2"/>
-            <!-- Pendant frame -->
-            <circle cx="50" cy="73" r="18" fill="none" stroke="url(#pendant-rg)" stroke-width="3.5" filter="url(#shadow2)"/>
-            <circle cx="50" cy="73" r="13" fill="url(#pendant-rg)" opacity="0.15"/>
-            <!-- Ruby center -->
-            <circle cx="50" cy="73" r="9" fill="url(#ruby-rg)" filter="url(#shadow2)"/>
-            <ellipse cx="47" cy="70" rx="3.5" ry="2" fill="#ff8888" opacity="0.6"/>
-            <circle cx="47" cy="70" r="1.2" fill="#ffcccc" opacity="0.7"/>
-            <!-- Pendant shine -->
-            <path d="M36 63 Q38 60 42 62" stroke="#F5E090" stroke-width="1" fill="none" opacity="0.6"/>
-            <!-- Sparkles -->
-            <g fill="#F5E090">
-              <circle cx="18" cy="12" r="1"/>
-              <line x1="18" y1="9" x2="18" y2="15" stroke="#F5E090" stroke-width="0.7"/>
-              <line x1="15" y1="12" x2="21" y2="12" stroke="#F5E090" stroke-width="0.7"/>
-              <circle cx="82" cy="18" r="0.8"/>
-              <circle cx="88" cy="60" r="0.6"/>
-            </g>
-          </svg>
+        <div class="service-photo">
+          <img src="images/earring-drop.jpg" alt="עגילי טיפה נופלים משובצים יהלומים" loading="lazy" decoding="async" />
         </div>
-        <h3>תכשיטים לאירועים</h3>
-        <p>שרשראות, עגילים וצמידים לחתונות, בת-מצוות ואירועי חיים בלתי נשכחים.</p>
+        <div class="service-body">
+          <h3>תכשיטים לאירועים</h3>
+          <p>שרשראות, עגילים וצמידים לחתונות, בת-מצוות ואירועי חיים בלתי נשכחים.</p>
+        </div>
       </article>
 
       <!-- חריטה -->
       <article class="service-card reveal reveal-delay-2" role="listitem" tabindex="0" aria-label="תכשיטים עם חריטה">
-        <div class="service-icon" role="img" aria-label="איור מדליון עם חריטה אישית">
-          <svg viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <defs>
-              <radialGradient id="medal-rg" cx="35%" cy="30%" r="65%">
-                <stop offset="0%" stop-color="#F5E090"/>
-                <stop offset="45%" stop-color="#C9A84C"/>
-                <stop offset="100%" stop-color="#5A3E10"/>
-              </radialGradient>
-              <linearGradient id="medal-edge" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#E8C96A"/>
-                <stop offset="100%" stop-color="#7A5C1E"/>
-              </linearGradient>
-              <filter id="shadow3"><feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.55"/></filter>
-            </defs>
-            <!-- Chain top -->
-            <path d="M44 12 Q50 8 56 12" stroke="#C9A84C" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <line x1="50" y1="8" x2="50" y2="20" stroke="#C9A84C" stroke-width="2.5"/>
-            <!-- Outer ring -->
-            <circle cx="50" cy="58" r="34" fill="url(#medal-edge)" filter="url(#shadow3)"/>
-            <!-- Inner face -->
-            <circle cx="50" cy="58" r="29" fill="url(#medal-rg)"/>
-            <!-- Engraved lines (text simulation) -->
-            <line x1="34" y1="48" x2="66" y2="48" stroke="#5A3E10" stroke-width="1.5" opacity="0.7"/>
-            <line x1="34" y1="54" x2="66" y2="54" stroke="#5A3E10" stroke-width="1.5" opacity="0.7"/>
-            <line x1="34" y1="60" x2="66" y2="60" stroke="#5A3E10" stroke-width="1.5" opacity="0.7"/>
-            <line x1="34" y1="66" x2="58" y2="66" stroke="#5A3E10" stroke-width="1.5" opacity="0.7"/>
-            <!-- Engraving tool -->
-            <rect x="60" y="62" width="18" height="5" rx="2.5" fill="#888" transform="rotate(-40 60 62)"/>
-            <polygon points="60,62 56,67 59,68" fill="#aaa" transform="rotate(-40 60 62)"/>
-            <!-- Shine -->
-            <ellipse cx="41" cy="46" rx="8" ry="4" fill="#F5E090" opacity="0.25" transform="rotate(-20 41 46)"/>
-            <!-- Sparkle -->
-            <g fill="#F5E090">
-              <circle cx="82" cy="28" r="1.2"/>
-              <line x1="82" y1="24" x2="82" y2="32" stroke="#F5E090" stroke-width="0.8"/>
-              <line x1="78" y1="28" x2="86" y2="28" stroke="#F5E090" stroke-width="0.8"/>
-            </g>
-          </svg>
+        <div class="service-photo">
+          <img src="images/rings-two.jpg" alt="סט טבעות זהב — סוליטר אובל וטבעת איטרניטי משובצת" loading="lazy" decoding="async" />
         </div>
-        <h3>תכשיטים עם חריטה</h3>
-        <p>הוסיפו שם, תאריך או ציטוט מיוחד — מתנה שנשמרת לדורות.</p>
+        <div class="service-body">
+          <h3>תכשיטים עם חריטה</h3>
+          <p>הוסיפו שם, תאריך או ציטוט מיוחד — מתנה שנשמרת לדורות.</p>
+        </div>
       </article>
 
       <!-- תיקון תכשיט -->
       <article class="service-card reveal" role="listitem" tabindex="0" aria-label="תיקון תכשיטים">
-        <div class="service-icon" role="img" aria-label="איור כלי תיקון תכשיטים">
-          <svg viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="plier-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#d0d0d0"/>
-                <stop offset="50%" stop-color="#888"/>
-                <stop offset="100%" stop-color="#444"/>
-              </linearGradient>
-              <radialGradient id="mini-ring" cx="35%" cy="30%" r="65%">
-                <stop offset="0%" stop-color="#F5E090"/>
-                <stop offset="55%" stop-color="#C9A84C"/>
-                <stop offset="100%" stop-color="#5A3E10"/>
-              </radialGradient>
-              <filter id="shadow4"><feDropShadow dx="1" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/></filter>
-            </defs>
-            <!-- Pliers body left -->
-            <path d="M20 80 L35 55 L48 48" stroke="url(#plier-grad)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow4)"/>
-            <!-- Pliers body right -->
-            <path d="M80 80 L65 55 L52 48" stroke="url(#plier-grad)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow4)"/>
-            <!-- Pliers jaw left -->
-            <path d="M48 48 L42 35 L50 28" stroke="url(#plier-grad)" stroke-width="6" fill="none" stroke-linecap="round"/>
-            <!-- Pliers jaw right -->
-            <path d="M52 48 L58 35 L50 28" stroke="url(#plier-grad)" stroke-width="6" fill="none" stroke-linecap="round"/>
-            <!-- Pivot screw -->
-            <circle cx="50" cy="50" r="6" fill="#aaa" filter="url(#shadow4)"/>
-            <circle cx="50" cy="50" r="3" fill="#666"/>
-            <!-- Mini ring being held -->
-            <ellipse cx="50" cy="22" rx="10" ry="10" fill="none" stroke="url(#mini-ring)" stroke-width="4" filter="url(#shadow4)"/>
-            <ellipse cx="50" cy="22" rx="5" ry="5" fill="#0a0a0a" opacity="0.8"/>
-            <!-- Shine on ring -->
-            <path d="M42 16 Q44 13 48 15" stroke="#F5E090" stroke-width="1" fill="none" opacity="0.7"/>
-            <!-- Grip texture -->
-            <line x1="23" y1="77" x2="28" y2="70" stroke="#ccc" stroke-width="1" opacity="0.4"/>
-            <line x1="27" y1="80" x2="32" y2="73" stroke="#ccc" stroke-width="1" opacity="0.4"/>
-            <line x1="73" y1="77" x2="68" y2="70" stroke="#ccc" stroke-width="1" opacity="0.4"/>
-            <line x1="77" y1="80" x2="72" y2="73" stroke="#ccc" stroke-width="1" opacity="0.4"/>
-            <!-- Sparkle -->
-            <g fill="#F5E090">
-              <circle cx="72" cy="12" r="1"/>
-              <line x1="72" y1="9" x2="72" y2="15" stroke="#F5E090" stroke-width="0.7"/>
-              <line x1="69" y1="12" x2="75" y2="12" stroke="#F5E090" stroke-width="0.7"/>
-            </g>
-          </svg>
+        <div class="service-photo">
+          <img src="images/ring-marquise.jpg" alt="טבעת זהב עם יהלום בליטוש טיפה בעבודת יד" loading="lazy" decoding="async" />
         </div>
-        <h3>תיקון תכשיט</h3>
-        <p>הפכו תכשיט ישן לחדש — תיקון, ניקוי, עיצוב מחדש ושינוי מידה.</p>
+        <div class="service-body">
+          <h3>תיקון תכשיט</h3>
+          <p>הפכו תכשיט ישן לחדש — תיקון, ניקוי, עיצוב מחדש ושינוי מידה.</p>
+        </div>
       </article>
 
       <!-- מתנה -->
       <article class="service-card reveal reveal-delay-1" role="listitem" tabindex="0" aria-label="מתנות מותאמות אישית">
-        <div class="service-icon" role="img" aria-label="איור קופסת מתנה יוקרתית לתכשיט">
-          <svg viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="box-front" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#1a1a1a"/>
-                <stop offset="100%" stop-color="#0a0a0a"/>
-              </linearGradient>
-              <linearGradient id="box-top" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#2a2a2a"/>
-                <stop offset="100%" stop-color="#141414"/>
-              </linearGradient>
-              <linearGradient id="ribbon-h" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#9A7A30"/>
-                <stop offset="50%" stop-color="#E8C96A"/>
-                <stop offset="100%" stop-color="#9A7A30"/>
-              </linearGradient>
-              <linearGradient id="ribbon-v" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#9A7A30"/>
-                <stop offset="50%" stop-color="#E8C96A"/>
-                <stop offset="100%" stop-color="#9A7A30"/>
-              </linearGradient>
-              <filter id="shadow5"><feDropShadow dx="2" dy="5" stdDeviation="4" flood-color="#000" flood-opacity="0.6"/></filter>
-            </defs>
-            <!-- Box body -->
-            <rect x="18" y="52" width="64" height="40" rx="3" fill="url(#box-front)" filter="url(#shadow5)"/>
-            <!-- Box top face (3D top) -->
-            <path d="M18 52 L28 40 L92 40 L82 52 Z" fill="url(#box-top)"/>
-            <!-- Box right side (3D) -->
-            <path d="M82 52 L92 40 L92 80 L82 92 Z" fill="#0d0d0d"/>
-            <!-- Ribbon horizontal on front -->
-            <rect x="18" y="66" width="64" height="8" fill="url(#ribbon-h)"/>
-            <!-- Ribbon vertical on front -->
-            <rect x="46" y="52" width="8" height="40" fill="url(#ribbon-v)"/>
-            <!-- Ribbon on top -->
-            <path d="M28 40 L46 40 L46 52 L28 52 Z" fill="#C9A84C" opacity="0.8"/>
-            <path d="M54 40 L82 40 L82 52 L54 52 Z" fill="#C9A84C" opacity="0.8"/>
-            <!-- Ribbon top cross -->
-            <path d="M28 40 L92 40" stroke="url(#ribbon-h)" stroke-width="7"/>
-            <path d="M50 18 L50 52" stroke="url(#ribbon-v)" stroke-width="7"/>
-            <!-- Bow loops -->
-            <ellipse cx="40" cy="26" rx="14" ry="9" fill="none" stroke="#E8C96A" stroke-width="4" transform="rotate(-15 40 26)" filter="url(#shadow5)"/>
-            <ellipse cx="60" cy="26" rx="14" ry="9" fill="none" stroke="#E8C96A" stroke-width="4" transform="rotate(15 60 26)" filter="url(#shadow5)"/>
-            <!-- Bow knot -->
-            <circle cx="50" cy="30" r="5" fill="#C9A84C" filter="url(#shadow5)"/>
-            <circle cx="50" cy="30" r="2.5" fill="#F5E090"/>
-            <!-- Shine on box -->
-            <path d="M20 54 L28 42 L40 42" stroke="#fff" stroke-width="1" fill="none" opacity="0.08"/>
-            <!-- Sparkle -->
-            <g fill="#F5E090">
-              <circle cx="88" cy="12" r="1.2"/>
-              <line x1="88" y1="8" x2="88" y2="16" stroke="#F5E090" stroke-width="0.8"/>
-              <line x1="84" y1="12" x2="92" y2="12" stroke="#F5E090" stroke-width="0.8"/>
-              <circle cx="14" cy="32" r="0.8"/>
-            </g>
-          </svg>
+        <div class="service-photo">
+          <img src="images/necklace-drop.jpg" alt="שרשרת זהב עדינה עם תליון יהלום בצורת טיפה" loading="lazy" decoding="async" />
         </div>
-        <h3>מתנות מותאמות</h3>
-        <p>תכשיט כמתנה הוא הכי אישי שיש — נעזור לכם לבחור ולעצב את המושלם.</p>
+        <div class="service-body">
+          <h3>מתנות מותאמות</h3>
+          <p>תכשיט כמתנה הוא הכי אישי שיש — נעזור לכם לבחור ולעצב את המושלם.</p>
+        </div>
       </article>
 
       <!-- קולקציית יוקרה -->
       <article class="service-card reveal reveal-delay-2" role="listitem" tabindex="0" aria-label="קולקציית יוקרה">
-        <div class="service-icon" role="img" aria-label="איור יהלום יוקרתי מגולף">
-          <svg viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="diam-top" x1="20%" y1="0%" x2="80%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="40%" stop-color="#b8e4ff"/>
-                <stop offset="100%" stop-color="#4488cc"/>
-              </linearGradient>
-              <linearGradient id="diam-left" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#88ccff"/>
-                <stop offset="100%" stop-color="#1a4488"/>
-              </linearGradient>
-              <linearGradient id="diam-right" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#aaddff"/>
-                <stop offset="100%" stop-color="#002266"/>
-              </linearGradient>
-              <linearGradient id="diam-bot" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%" stop-color="#3366aa"/>
-                <stop offset="100%" stop-color="#001133"/>
-              </linearGradient>
-              <filter id="shadow6"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0044aa" flood-opacity="0.4"/></filter>
-              <filter id="glow6">
-                <feGaussianBlur stdDeviation="3" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <!-- Crown/girdle row -->
-            <polygon points="50,15 65,32 50,28 35,32" fill="url(#diam-top)" filter="url(#shadow6)"/>
-            <!-- Table (top flat) -->
-            <polygon points="50,15 66,26 60,26 50,20 40,26 34,26" fill="#e8f4ff" opacity="0.9"/>
-            <!-- Upper facets left -->
-            <polygon points="35,32 50,28 44,44" fill="url(#diam-left)" opacity="0.9"/>
-            <polygon points="20,44 35,32 44,44" fill="#5599cc" opacity="0.8"/>
-            <!-- Upper facets right -->
-            <polygon points="65,32 50,28 56,44" fill="url(#diam-right)" opacity="0.9"/>
-            <polygon points="80,44 65,32 56,44" fill="#3377bb" opacity="0.8"/>
-            <!-- Girdle line -->
-            <polygon points="20,44 44,44 50,48 56,44 80,44 50,46" fill="#aaccee" opacity="0.5"/>
-            <!-- Lower facets (pavilion) -->
-            <polygon points="20,44 50,46 44,44" fill="#2255aa" opacity="0.7"/>
-            <polygon points="20,44 50,85 50,46" fill="url(#diam-bot)" opacity="0.9"/>
-            <polygon points="80,44 50,46 56,44" fill="#1144aa" opacity="0.7"/>
-            <polygon points="80,44 50,85 50,46" fill="#001a55" opacity="0.9"/>
-            <polygon points="44,44 56,44 50,85" fill="#2266cc" opacity="0.6"/>
-            <!-- Culet (bottom point) -->
-            <circle cx="50" cy="85" r="1.5" fill="#88aadd"/>
-            <!-- Shine/reflection -->
-            <polygon points="50,16 60,24 55,22 50,18" fill="#ffffff" opacity="0.8"/>
-            <polygon points="38,30 44,26 42,32" fill="#ffffff" opacity="0.5"/>
-            <!-- Rainbow dispersion glint -->
-            <circle cx="28" cy="36" r="2.5" fill="#ff8844" opacity="0.35" filter="url(#glow6)"/>
-            <circle cx="72" cy="36" r="2.5" fill="#44ffaa" opacity="0.35" filter="url(#glow6)"/>
-            <circle cx="50" cy="12" r="2" fill="#8844ff" opacity="0.3" filter="url(#glow6)"/>
-            <!-- Sparkles -->
-            <g fill="#C9A84C" filter="url(#glow6)">
-              <circle cx="18" cy="20" r="1.5"/>
-              <line x1="18" y1="15" x2="18" y2="25" stroke="#F5E090" stroke-width="1"/>
-              <line x1="13" y1="20" x2="23" y2="20" stroke="#F5E090" stroke-width="1"/>
-              <circle cx="82" cy="18" r="1"/>
-              <circle cx="88" cy="55" r="0.8"/>
-            </g>
-          </svg>
+        <div class="service-photo">
+          <img src="images/bracelets-tennis-clean.jpg" alt="צמידי טניס משובצים יהלומים בגדלים שונים" loading="lazy" decoding="async" />
         </div>
-        <h3>קולקציית יוקרה</h3>
-        <p>זהב 18 קראט, פלטינה ויהלומים נבחרים לאלה שרוצים רק את הטוב ביותר.</p>
+        <div class="service-body">
+          <h3>קולקציית יוקרה</h3>
+          <p>זהב 18 קראט, פלטינה ויהלומים נבחרים לאלה שרוצים רק את הטוב ביותר.</p>
+        </div>
       </article>
 
     </div>
