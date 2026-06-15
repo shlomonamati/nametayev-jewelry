@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Namatiev — Logo Reveal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;background:#000;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif}
+#nm3{position:relative;width:760px;max-width:96vw;aspect-ratio:16/9;background:radial-gradient(ellipse at 50% 32%,#2a2620 0%,#161310 55%,#080706 100%);border-radius:18px;text-align:center;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#nm3 .rays{position:absolute;top:8%;left:50%;width:46%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(231,198,107,.14) 16deg,transparent 34deg,transparent 70deg,rgba(231,198,107,.1) 86deg,transparent 104deg,transparent 160deg,rgba(231,198,107,.14) 176deg,transparent 194deg,transparent 250deg,rgba(231,198,107,.1) 266deg,transparent 284deg,transparent 340deg,rgba(231,198,107,.14) 356deg,transparent 360deg);-webkit-mask:radial-gradient(circle,#000 0%,transparent 60%);mask:radial-gradient(circle,#000 0%,transparent 60%);animation:nm3-rot 28s linear infinite;opacity:0;pointer-events:none}
+#nm3.play .rays{animation:nm3-rot 28s linear infinite,nm3-fade 1.5s ease 1.4s forwards}
+@keyframes nm3-rot{to{transform:translateX(-50%) rotate(360deg)}}
+@keyframes nm3-fade{to{opacity:1}}
+#nm3 .gemwrap{position:relative;width:118px;height:118px;margin:0 auto 14px}
+#nm3 .clip{position:absolute;inset:0;clip-path:polygon(30% 1%,70% 1%,99% 30%,99% 70%,70% 99%,30% 99%,1% 70%,1% 30%)}
+#nm3 .edge{background:linear-gradient(135deg,#f7e29a,#9a7320 45%,#f3d885 70%,#7a5a17)}
+#nm3 .face{inset:3px;background:conic-gradient(from 20deg,#1b1714,#33291c,#14110e,#3a2e1a,#19150f,#2c2417,#100e0c,#352a17,#1b1714)}
+#nm3 .gleam{inset:3px;overflow:hidden}
+#nm3 .gleam:before{content:"";position:absolute;top:-40%;left:-70%;width:55%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,247,210,.75),transparent);transform:rotate(14deg)}
+#nm3.play .gleam:before{animation:nm3-sweep 4.5s ease-in-out 2s infinite}
+@keyframes nm3-sweep{0%{left:-70%}55%,100%{left:150%}}
+#nm3 .mono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-weight:600;font-size:46px;color:#f3dc94;text-shadow:0 1px 0 #6e520f,0 2px 2px rgba(0,0,0,.6);opacity:0}
+#nm3.play .mono{animation:nm3-engrave 1s ease 1.5s forwards}
+@keyframes nm3-engrave{0%{opacity:0;transform:scale(1.4);filter:blur(4px)}100%{opacity:1;transform:scale(1);filter:blur(0)}}
+#nm3 .gem{opacity:0}
+#nm3.play .gem{animation:nm3-materialize 1.1s cubic-bezier(.2,.8,.2,1) .7s forwards,nm3-float 5s ease-in-out 2.2s infinite}
+@keyframes nm3-materialize{0%{opacity:0;transform:scale(.2) rotate(-20deg);filter:blur(6px)}100%{opacity:1;transform:scale(1) rotate(0);filter:blur(0)}}
+@keyframes nm3-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(1.5deg)}}
+#nm3 .pcl{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffe28a;box-shadow:0 0 6px 1px rgba(255,210,120,.9);opacity:0}
+#nm3.play .pcl{animation:nm3-converge 1.3s ease-in forwards}
+@keyframes nm3-converge{0%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.4)}30%{opacity:1}100%{opacity:0;transform:translate(0,0) scale(1)}}
+#nm3 .word{position:relative;font-weight:600;font-size:58px;letter-spacing:5px;line-height:1;display:inline-block;clip-path:inset(0 100% 0 0)}
+#nm3.play .word{animation:nm3-reveal 1s ease 2.1s forwards}
+@keyframes nm3-reveal{to{clip-path:inset(0 0 0 0)}}
+#nm3 .word .face2{background:linear-gradient(100deg,#7a5a17,#e7c66b 24%,#fff7df 42%,#e7c66b 54%,#9a7320 74%,#f0d27e);background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:nm3-shine 5s ease-in-out 2.8s infinite}
+#nm3 .word .extr{position:absolute;left:0;top:0;z-index:-1;color:#2e220a;text-shadow:1px 1px 0 #3f2f0c,2px 2px 0 #34270a,3px 3px 0 #2a1f08,4px 4px 7px rgba(0,0,0,.6)}
+@keyframes nm3-shine{0%{background-position:-180% 0}60%,100%{background-position:180% 0}}
+#nm3 .streak{position:absolute;left:0;top:50%;width:40px;height:78px;margin-top:-39px;background:linear-gradient(90deg,transparent,rgba(255,247,210,.9),transparent);opacity:0;pointer-events:none}
+#nm3.play .streak{animation:nm3-streak 1s ease 2.1s forwards}
+@keyframes nm3-streak{0%{left:-10%;opacity:0}20%{opacity:1}100%{left:105%;opacity:0}}
+#nm3 .flour{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px auto 0;opacity:0}
+#nm3.play .flour{animation:nm3-fade 1s ease 3s forwards}
+#nm3 .flour .ln{height:1px;width:80px;background:linear-gradient(90deg,transparent,#c8a24b)}
+#nm3 .flour .ln.r{background:linear-gradient(90deg,#c8a24b,transparent)}
+#nm3 .flour .d{color:#bfe9ff;font-size:11px;filter:drop-shadow(0 0 5px rgba(190,233,255,.9));animation:nm3-tw 2s ease-in-out infinite}
+#nm3 .tag{font-family:'Cinzel',serif;color:#cbb27a;font-size:11px;letter-spacing:5px;margin-top:12px;opacity:0}
+#nm3.play .tag{animation:nm3-fade 1s ease 3.2s forwards}
+#nm3 .sp{position:absolute;color:#fff;font-size:11px;opacity:0;pointer-events:none}
+#nm3.play .sp{animation:nm3-tw 2.6s ease-in-out 3s infinite}
+@keyframes nm3-tw{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:1;transform:scale(1.2)}}
+</style>
+</head>
+<body>
+<div id="nm3" class="play">
+  <div class="rays"></div>
+  <span class="sp" style="left:16%;top:30%;animation-delay:.1s">&#10022;</span>
+  <span class="sp" style="left:82%;top:26%;animation-delay:.6s">&#10023;</span>
+  <span class="sp" style="left:22%;top:60%;animation-delay:1.1s">&#10022;</span>
+  <span class="sp" style="left:80%;top:58%;animation-delay:1.7s">&#10023;</span>
+  <div class="gemwrap">
+    <span class="pcl" style="--dx:-70px;--dy:-60px;animation-delay:.05s"></span>
+    <span class="pcl" style="--dx:75px;--dy:-50px;animation-delay:.15s"></span>
+    <span class="pcl" style="--dx:-60px;--dy:65px;animation-delay:.25s"></span>
+    <span class="pcl" style="--dx:80px;--dy:55px;animation-delay:.1s"></span>
+    <span class="pcl" style="--dx:0;--dy:-90px;animation-delay:.3s"></span>
+    <span class="pcl" style="--dx:-95px;--dy:5px;animation-delay:.2s"></span>
+    <span class="pcl" style="--dx:95px;--dy:0;animation-delay:.35s"></span>
+    <span class="pcl" style="--dx:10px;--dy:90px;animation-delay:.4s"></span>
+    <div class="gem">
+      <div class="clip edge"></div>
+      <div class="clip face"></div>
+      <div class="clip gleam"></div>
+      <div class="mono">N</div>
+    </div>
+  </div>
+  <div style="position:relative;display:inline-block">
+    <div class="word"><span class="extr">Namatiev</span><span class="face2">Namatiev</span></div>
+    <div class="streak"></div>
+  </div>
+  <div class="flour"><span class="ln"></span><span class="d">&#9670;</span><span class="ln r"></span></div>
+  <div class="tag">EVERY LOVE STORY DESERVES ITS OWN DIAMOND</div>
+</div>
+<script>
+var s=document.getElementById('nm3');
+setInterval(function(){s.classList.remove('play');void s.offsetWidth;s.classList.add('play');},7000);
+</script>
+</body>
+</html>

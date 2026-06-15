@@ -16,8 +16,8 @@
   <link rel="canonical" href="https://namatievjewllery.com/" />
 
   <!-- Favicon (הסמל הקטן ליד האתר בתוצאות גוגל) -->
-  <link rel="icon" type="image/svg+xml" href="https://namatievjewllery.com/images/logo-nametayev.svg" />
-  <link rel="apple-touch-icon" href="https://namatievjewllery.com/images/logo-nametayev.svg" />
+  <link rel="icon" type="image/webp" href="https://namatievjewllery.com/images/favicon-namatiev.webp" />
+  <link rel="apple-touch-icon" href="https://namatievjewllery.com/images/favicon-namatiev.webp" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="business.business" />
@@ -50,7 +50,7 @@
     "email": "shlomonamati@gmail.com",
     "priceRange": "₪₪₪",
     "image": "https://namatievjewllery.com/images/portfolio-ring-halo.jpg",
-    "logo": "https://namatievjewllery.com/images/logo-nametayev.svg",
+    "logo": "https://namatievjewllery.com/images/favicon-namatiev.webp",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "הבורסה 1",
@@ -332,6 +332,32 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+    .logo-img {
+      height: 60px;
+      width: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    nav.scrolled .logo-img { height: 50px; }
+    @media (max-width: 600px) { .logo-img { height: 46px; } }
+
+    /* ── BRAND FILM ── */
+    .brand-film {
+      background: radial-gradient(ellipse at 50% 40%, #14110d 0%, #060503 75%);
+      padding: 4rem 5%;
+      display: flex;
+      justify-content: center;
+    }
+    .brand-film-inner {
+      width: min(820px, 100%);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.28);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.6);
+      line-height: 0;
+    }
+    .brand-film-video { width: 100%; height: auto; display: block; }
+    @media (max-width: 600px) { .brand-film { padding: 2.5rem 5%; } }
 
     .nav-links {
       list-style: none;
@@ -1183,17 +1209,17 @@
       z-index: 400;
       width: 54px; height: 54px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      background: linear-gradient(135deg, #4A90E2, #1E5FD0);
       border: none;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 20px rgba(201,168,76,0.45);
+      box-shadow: 0 4px 20px rgba(37,99,235,0.45);
       transition: transform 0.25s, box-shadow 0.25s;
       font-size: 1.5rem;
     }
-    .aw-trigger:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(201,168,76,0.6); }
+    .aw-trigger:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,99,235,0.6); }
     .aw-trigger:focus-visible { outline: var(--focus-ring); outline-offset: 4px; }
 
     .aw-panel {
@@ -1594,7 +1620,7 @@
 <header role="banner">
   <nav role="navigation" aria-label="ניווט ראשי" id="main-nav">
     <a href="#home" class="logo" aria-label="נמטייב תכשיטים – חזרה לדף הבית">
-      נמטייב <span>תכשיטים</span>
+      <img src="images/logo-namatiev-web.webp" alt="נמטייב תכשיטים — Namatiev" class="logo-img" width="190" height="64" decoding="async" />
     </a>
 
     <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="nav-links" aria-label="פתח תפריט ניווט">
@@ -1672,6 +1698,32 @@
     </div>
 
   </section>
+
+  <!-- BRAND FILM -->
+  <section class="brand-film" aria-label="סרטון המותג של נמטייב תכשיטים">
+    <div class="brand-film-inner">
+      <video class="brand-film-video" id="brand-film-video" muted loop playsinline preload="none" poster="images/logo-namatiev-web.webp" aria-label="הנפשת הלוגו של נמטייב תכשיטים">
+        <source data-src="images/namatiev-logo-animation.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </section>
+  <script>
+  (function(){
+    var v = document.getElementById('brand-film-video');
+    if (!v) return;
+    var src = v.querySelector('source');
+    var loaded = false;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          if (!loaded && src && src.dataset.src){ src.src = src.dataset.src; v.load(); loaded = true; }
+          var p = v.play(); if (p && p.catch) p.catch(function(){});
+        } else { v.pause(); }
+      });
+    }, { threshold: 0.25 });
+    io.observe(v);
+  })();
+  </script>
 
   <!-- ABOUT -->
   <section id="about" aria-labelledby="about-heading">
@@ -2288,8 +2340,8 @@
 <!-- ── ACCESSIBILITY WIDGET ── -->
 <button class="aw-trigger" id="aw-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="aw-panel" aria-label="פתח תפריט נגישות">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-    <circle cx="12" cy="4.5" r="2" fill="#0A0A0A"/>
-    <path d="M5 9h14M12 9v11M8 20l4-6 4 6" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="4.5" r="2" fill="#FFFFFF"/>
+    <path d="M5 9h14M12 9v11M8 20l4-6 4 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </button>
 
