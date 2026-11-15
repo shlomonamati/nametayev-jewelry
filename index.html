@@ -1367,7 +1367,7 @@
       z-index: 401;
       width: min(300px, calc(100vw - 2rem));
       max-height: calc(100vh - 7rem);
-      background: #1a1a1a;
+      background: #FFFFFF;
       border: 1px solid rgba(74,144,226,0.25);
       border-radius: 16px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.7);
@@ -1430,8 +1430,8 @@
     }
 
     .aw-item {
-      background: #242424;
-      border: 1px solid rgba(255,255,255,0.06);
+      background: #F2F6FC;
+      border: 1px solid #D6E2F3;
       border-radius: 10px;
       padding: 0.85rem 0.6rem 0.7rem;
       display: flex;
@@ -1441,19 +1441,19 @@
       cursor: pointer;
       transition: all 0.2s;
       font-family: 'Heebo', sans-serif;
-      color: var(--text-light);
+      color: #1E2A3A;
       font-size: 0.75rem;
       font-weight: 500;
       text-align: center;
       border: 1px solid transparent;
     }
-    .aw-item:hover { background: #2e2e2e; border-color: rgba(74,144,226,0.2); }
+    .aw-item:hover { background: #E6EFFB; border-color: rgba(74,144,226,0.2); }
     .aw-item.active {
       background: rgba(74,144,226,0.12);
-      border-color: #6AA8F0;
-      color: #6AA8F0;
+      border-color: #1E5FD0;
+      color: #1E5FD0;
     }
-    .aw-item:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+    .aw-item:focus-visible { outline: 3px solid #1E5FD0; outline-offset: 2px; }
     .aw-item-icon { font-size: 1.6rem; line-height: 1; }
     .aw-item-label { line-height: 1.3; }
 
@@ -1461,21 +1461,21 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #242424;
+      background: #F2F6FC;
       border-radius: 10px;
       padding: 0.6rem 0.8rem;
       margin-bottom: 0.5rem;
       border: 1px solid transparent;
     }
-    .aw-font-row.active { border-color: #6AA8F0; background: rgba(74,144,226,0.08); }
-    .aw-font-label { color: var(--text-light); font-size: 0.8rem; font-weight: 500; }
+    .aw-font-row.active { border-color: #1E5FD0; background: rgba(74,144,226,0.08); }
+    .aw-font-label { color: #1E2A3A; font-size: 0.8rem; font-weight: 500; }
     .aw-font-controls { display: flex; gap: 0.4rem; }
     .aw-font-btn {
       width: 30px; height: 30px;
       border-radius: 6px;
       border: 1px solid rgba(74,144,226,0.3);
-      background: #1a1a1a;
-      color: #6AA8F0;
+      background: #FFFFFF;
+      color: #1E5FD0;
       font-size: 1rem; font-weight: 700;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
@@ -1483,15 +1483,15 @@
       font-family: 'Heebo', sans-serif;
     }
     .aw-font-btn:hover { background: rgba(74,144,226,0.15); }
-    .aw-font-btn:focus-visible { outline: var(--focus-ring); }
-    .aw-font-size { color: #6AA8F0; font-weight: 700; font-size: 0.85rem; min-width: 28px; text-align: center; }
+    .aw-font-btn:focus-visible { outline: 3px solid #1E5FD0; }
+    .aw-font-size { color: #1E5FD0; font-weight: 700; font-size: 0.85rem; min-width: 28px; text-align: center; }
 
     .aw-reset {
       width: 100%;
       background: rgba(74,144,226,0.08);
       border: 1px solid rgba(74,144,226,0.2);
       border-radius: 8px;
-      color: #6AA8F0;
+      color: #1E5FD0;
       font-family: 'Heebo', sans-serif;
       font-size: 0.8rem;
       font-weight: 600;
@@ -1501,19 +1501,19 @@
       display: flex; align-items: center; justify-content: center; gap: 0.4rem;
     }
     .aw-reset:hover { background: rgba(74,144,226,0.18); }
-    .aw-reset:focus-visible { outline: var(--focus-ring); }
+    .aw-reset:focus-visible { outline: 3px solid #1E5FD0; }
 
     .aw-footer {
-      background: #141414;
+      background: #F5F7FA;
       padding: 0.7rem 1rem;
       text-align: center;
-      color: var(--text-muted);
+      color: #4A5568;
       font-size: 0.7rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid #E2E8F0;
     }
-    .aw-footer a { color: #6AA8F0; text-decoration: none; }
+    .aw-footer a { color: #1E5FD0; text-decoration: none; }
     .aw-footer a:hover { text-decoration: underline; }
-    .aw-footer a:focus-visible { outline: var(--focus-ring); }
+    .aw-footer a:focus-visible { outline: 3px solid #1E5FD0; }
 
     /* Body states from widget */
     body.aw-big-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 4 L8 28 L14 22 L18 30 L21 28 L17 20 L25 20 Z' fill='%23C9A84C' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E"), auto !important; }
@@ -2684,7 +2684,7 @@
 
   <div class="aw-footer">
     אנו מחויבים לנגישות מלאה ·
-    <button onclick="showA11yStatement()" style="background:none;border:none;color:var(--gold);cursor:pointer;font-family:inherit;font-size:inherit;padding:0;" aria-label="הצהרת נגישות">הצהרת נגישות</button>
+    <button onclick="showA11yStatement()" style="background:none;border:none;color:#1E5FD0;cursor:pointer;font-family:inherit;font-size:inherit;padding:0;" aria-label="הצהרת נגישות">הצהרת נגישות</button>
   </div>
 
 </div>
