@@ -16,3 +16,7 @@ images/*.mov
 qa/node_modules/
 qa/test-report/
 qa/test-results/
+
+.claude/skills/
+.claude/user-preferences.md
+skills-lock.json
