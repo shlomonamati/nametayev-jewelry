@@ -1,0 +1,14 @@
+{
+  "name": "namatiev-qa",
+  "private": true,
+  "description": "E2E tests for namatievjewllery.com (Playwright + axe)",
+  "scripts": {
+    "test": "playwright test",
+    "report": "playwright show-report test-report"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "1.63.0",
+    "http-server": "^14.1.1"
+  }
+}

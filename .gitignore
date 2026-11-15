@@ -8,3 +8,11 @@ images/*.png
 images/*.mov
 תמונות חתוכות טובות לאתר/
 תמונו חדשות לסקשן פרוייקטים אחרונים/
+
+# Local Claude Code settings (contains secrets — never commit)
+.claude/settings.local.json
+
+# QA (Playwright)
+qa/node_modules/
+qa/test-report/
+qa/test-results/

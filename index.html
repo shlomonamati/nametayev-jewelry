@@ -1296,6 +1296,47 @@
       display: none;
     }
     .field-error.visible { display: block; }
+    /* Reference image upload */
+    .form-group input[type="file"] {
+      padding: 0.6rem 0.8rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .form-group input[type="file"]::file-selector-button {
+      margin-inline-end: 0.9rem;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .form-group input[type="file"]:hover::file-selector-button,
+    .form-group input[type="file"]:focus-visible::file-selector-button {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .form-group input[type="file"][aria-invalid="true"] {
+      border-color: #e05050;
+      box-shadow: 0 0 0 3px rgba(224,80,80,0.15);
+    }
+    .file-hint { display: block; color: var(--text-muted); font-size: 0.75rem; margin-top: 0.3rem; }
+    .file-preview { display: flex; align-items: center; gap: 0.9rem; margin-top: 0.7rem; }
+    .file-preview[hidden] { display: none; }
+    .file-preview img {
+      width: 72px; height: 72px; object-fit: cover;
+      border-radius: 6px; border: 1px solid rgba(201,168,76,0.35);
+    }
+    .file-remove {
+      background: none; border: 1px solid rgba(201,168,76,0.25); border-radius: 4px;
+      color: var(--text-light); font-family: 'Heebo', sans-serif; font-size: 0.8rem;
+      padding: 0.4rem 0.8rem; cursor: pointer;
+    }
+    .file-remove:hover, .file-remove:focus-visible { border-color: var(--gold); color: var(--gold); outline: none; }
     .form-submit { width: 100%; margin-top: 0.5rem; padding: 1.1rem; font-size: 1rem; }
 
     /* ── ACCESSIBILITY WIDGET ── */
@@ -2445,6 +2486,16 @@
           <label for="cf-msg">ספרו לנו עוד</label>
           <textarea id="cf-msg" name="message" placeholder="תארו את החזון, התקציב המשוער, תאריך הצורך..." aria-label="הודעה חופשית"></textarea>
         </div>
+        <div class="form-group">
+          <label for="cf-image">תמונת השראה (לא חובה)</label>
+          <input type="file" id="cf-image" name="image" accept="image/jpeg,image/png,image/webp" data-preview="cf-image-preview" aria-describedby="cf-image-hint cf-image-err" />
+          <span class="file-hint" id="cf-image-hint">תמונה עד 5MB, בפורמט JPG, PNG או WEBP</span>
+          <div class="file-preview" id="cf-image-preview" hidden>
+            <img alt="תצוגה מקדימה של התמונה שנבחרה" />
+            <button type="button" class="file-remove" aria-label="הסרת התמונה שנבחרה">✕ הסרה</button>
+          </div>
+          <span class="field-error" id="cf-image-err" role="alert">ניתן להעלות רק JPG, PNG או WEBP עד 5MB</span>
+        </div>
         <button type="submit" class="btn-primary form-submit" aria-label="שליחת הטופס">
           <span>✦ שלחו פרטים</span>
         </button>
@@ -2505,6 +2556,16 @@
           <option value="bracelet">צמיד</option>
           <option value="other">אחר</option>
         </select>
+      </div>
+      <div class="form-group">
+        <label for="m-image">תמונת השראה (לא חובה)</label>
+        <input type="file" id="m-image" name="image" accept="image/jpeg,image/png,image/webp" data-preview="m-image-preview" aria-describedby="m-image-hint m-image-err" />
+        <span class="file-hint" id="m-image-hint">תמונה עד 5MB, בפורמט JPG, PNG או WEBP</span>
+        <div class="file-preview" id="m-image-preview" hidden>
+          <img alt="תצוגה מקדימה של התמונה שנבחרה" />
+          <button type="button" class="file-remove" aria-label="הסרת התמונה שנבחרה">✕ הסרה</button>
+        </div>
+        <span class="field-error" id="m-image-err" role="alert">ניתן להעלות רק JPG, PNG או WEBP עד 5MB</span>
       </div>
       <button type="submit" class="btn-primary form-submit" aria-label="שליחת הפרטים">
         <span>✦ שלחו פרטים</span>
@@ -2924,6 +2985,72 @@ async function saveToSupabase(data) {
   } catch { return false; }
 }
 
+/* ── REFERENCE IMAGE UPLOAD ── */
+const IMAGE_BUCKET = 'reference-images';
+const IMAGE_TYPES  = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+const IMAGE_MAX    = 5 * 1024 * 1024;
+
+function isValidImage(file) {
+  return !!file && Object.prototype.hasOwnProperty.call(IMAGE_TYPES, file.type) && file.size <= IMAGE_MAX;
+}
+
+function setImageError(input, show) {
+  const err = document.getElementById(input.id + '-err');
+  input.setAttribute('aria-invalid', show ? 'true' : 'false');
+  if (err) err.classList.toggle('visible', show);
+}
+
+function clearImage(input) {
+  input.value = '';
+  setImageError(input, false);
+  const preview = document.getElementById(input.dataset.preview);
+  if (preview) { preview.hidden = true; preview.querySelector('img').removeAttribute('src'); }
+}
+
+document.querySelectorAll('input[type="file"][data-preview]').forEach(input => {
+  const preview = document.getElementById(input.dataset.preview);
+  input.addEventListener('change', () => {
+    const file = input.files && input.files[0];
+    if (!file) { clearImage(input); return; }
+    if (!isValidImage(file)) {
+      clearImage(input);
+      setImageError(input, true);
+      announce('ניתן להעלות רק JPG, PNG או WEBP עד 5MB');
+      return;
+    }
+    setImageError(input, false);
+    const reader = new FileReader();
+    reader.onload = () => {
+      preview.querySelector('img').src = reader.result;
+      preview.hidden = false;
+      announce('התמונה נבחרה');
+    };
+    reader.readAsDataURL(file);
+  });
+  preview.querySelector('.file-remove').addEventListener('click', () => {
+    clearImage(input);
+    input.focus();
+    announce('התמונה הוסרה');
+  });
+});
+
+async function uploadReferenceImage(file) {
+  try {
+    const path = `${crypto.randomUUID()}.${IMAGE_TYPES[file.type]}`;
+    const res = await fetch(`${SUPABASE_URL}/storage/v1/object/${IMAGE_BUCKET}/${path}`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON,
+        'Authorization': `Bearer ${SUPABASE_ANON}`,
+        'Content-Type': file.type,
+        'x-upsert': 'false'
+      },
+      body: file
+    });
+    return res.ok ? path : null;
+  } catch { return null; }
+}
+
 async function handleSubmit(e, successId) {
   e.preventDefault();
   const form = e.target;
@@ -2945,6 +3072,15 @@ async function handleSubmit(e, successId) {
 
   if (!valid) { announce('יש שדות חובה שלא מולאו'); return; }
 
+  const imageInput = form.querySelector('input[type="file"][data-preview]');
+  const imageFile  = imageInput && imageInput.files && imageInput.files[0];
+  if (imageFile && !isValidImage(imageFile)) {
+    setImageError(imageInput, true);
+    imageInput.focus();
+    announce('ניתן להעלות רק JPG, PNG או WEBP עד 5MB');
+    return;
+  }
+
   // Collect form data
   const fd = new FormData(form);
   const payload = {
@@ -2961,6 +3097,12 @@ async function handleSubmit(e, successId) {
   const submitBtn = form.querySelector('[type="submit"]');
   if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
 
+  // Upload the reference image first; a failed upload never blocks the lead
+  if (imageFile) {
+    const imagePath = await uploadReferenceImage(imageFile);
+    if (imagePath) payload.image_path = imagePath;
+  }
+
   await saveToSupabase(payload);
 
   if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
@@ -2970,6 +3112,7 @@ async function handleSubmit(e, successId) {
     msg.style.display = 'block';
     announce('הטופס נשלח בהצלחה, נחזור אליכם בהקדם');
     form.reset();
+    if (imageInput) clearImage(imageInput);
     setTimeout(() => {
       msg.style.display = 'none';
       if (successId === 'modal-success') closeModal();
