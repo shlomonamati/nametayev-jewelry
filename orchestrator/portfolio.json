@@ -1,0 +1,10 @@
+[
+  { "file": "images/portfolio-ring-halo.jpg",         "type": "engagement", "desc": "טבעת האלו זהב לבן משובצת יהלומים עגולים" },
+  { "file": "images/portfolio-ring-oval.jpg",         "type": "engagement", "desc": "טבעת סוליטר זהב צהוב עם יהלום אובל" },
+  { "file": "images/portfolio-ring-engraved.jpg",     "type": "ring",       "desc": "טבעת זהב עם חריטת שם ויהלום קטן" },
+  { "file": "images/portfolio-earring-model.jpg",     "type": "earrings",   "desc": "עגיל טיפה יהלום בזהב לבן" },
+  { "file": "images/portfolio-earrings-pear.jpg",     "type": "earrings",   "desc": "זוג עגילי יהלום כפולים בליטוש אגס" },
+  { "file": "images/portfolio-necklace-pendant.jpg",  "type": "necklace",   "desc": "שרשרת זהב צהוב עם תליון יהלום אובל" },
+  { "file": "images/portfolio-bracelets-tennis.jpg",  "type": "bracelet",   "desc": "צמידי טניס משובצים יהלומים בגדלים שונים" },
+  { "file": "images/portfolio-bracelet-gold.jpg",     "type": "bracelet",   "desc": "צמיד חוליות לגבר בשילוב זהב צהוב ולבן" }
+]

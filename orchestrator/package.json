@@ -1,0 +1,11 @@
+{
+  "name": "namatiev-orchestrator",
+  "private": true,
+  "type": "module",
+  "description": "AI orchestrator for namatievjewllery.com — runs inside Claude Code",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test test/lib.test.mjs test/db.test.mjs",
+    "db": "node db.mjs"
+  }
+}

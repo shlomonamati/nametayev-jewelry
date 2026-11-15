@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node orchestrator/db.mjs:*)",
+      "Bash(cd qa && npm test)",
+      "Bash(cd orchestrator && npm test)",
+      "Read(.orchestrator/**)",
+      "Write(.orchestrator/**)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Bash(git push --force:*)",
+      "Bash(gh pr merge:*)"
+    ]
+  }
+}

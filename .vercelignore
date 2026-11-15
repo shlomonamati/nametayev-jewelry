@@ -1,1 +1,7 @@
 qa/
+orchestrator/
+supabase/
+.claude/
+.env.example
+ORCHESTRATOR.md
+CLAUDE.md
