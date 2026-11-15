@@ -2489,12 +2489,12 @@
         <div class="form-group">
           <label for="cf-image">תמונת השראה (לא חובה)</label>
           <input type="file" id="cf-image" name="image" accept="image/jpeg,image/png,image/webp" data-preview="cf-image-preview" aria-describedby="cf-image-hint cf-image-err" />
-          <span class="file-hint" id="cf-image-hint">תמונה עד 5MB, בפורמט JPG, PNG או WEBP</span>
+          <span class="file-hint" id="cf-image-hint">תמונה עד 15MB, בפורמט JPG, PNG או WEBP</span>
           <div class="file-preview" id="cf-image-preview" hidden>
             <img alt="תצוגה מקדימה של התמונה שנבחרה" />
             <button type="button" class="file-remove" aria-label="הסרת התמונה שנבחרה">✕ הסרה</button>
           </div>
-          <span class="field-error" id="cf-image-err" role="alert">ניתן להעלות רק JPG, PNG או WEBP עד 5MB</span>
+          <span class="field-error" id="cf-image-err" role="alert">ניתן להעלות רק JPG, PNG או WEBP עד 15MB</span>
         </div>
         <button type="submit" class="btn-primary form-submit" aria-label="שליחת הטופס">
           <span>✦ שלחו פרטים</span>
@@ -2560,12 +2560,12 @@
       <div class="form-group">
         <label for="m-image">תמונת השראה (לא חובה)</label>
         <input type="file" id="m-image" name="image" accept="image/jpeg,image/png,image/webp" data-preview="m-image-preview" aria-describedby="m-image-hint m-image-err" />
-        <span class="file-hint" id="m-image-hint">תמונה עד 5MB, בפורמט JPG, PNG או WEBP</span>
+        <span class="file-hint" id="m-image-hint">תמונה עד 15MB, בפורמט JPG, PNG או WEBP</span>
         <div class="file-preview" id="m-image-preview" hidden>
           <img alt="תצוגה מקדימה של התמונה שנבחרה" />
           <button type="button" class="file-remove" aria-label="הסרת התמונה שנבחרה">✕ הסרה</button>
         </div>
-        <span class="field-error" id="m-image-err" role="alert">ניתן להעלות רק JPG, PNG או WEBP עד 5MB</span>
+        <span class="field-error" id="m-image-err" role="alert">ניתן להעלות רק JPG, PNG או WEBP עד 15MB</span>
       </div>
       <button type="submit" class="btn-primary form-submit" aria-label="שליחת הפרטים">
         <span>✦ שלחו פרטים</span>
@@ -2988,7 +2988,8 @@ async function saveToSupabase(data) {
 /* ── REFERENCE IMAGE UPLOAD ── */
 const IMAGE_BUCKET = 'reference-images';
 const IMAGE_TYPES  = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
-const IMAGE_MAX    = 5 * 1024 * 1024;
+const IMAGE_MAX    = 15 * 1024 * 1024;
+const IMAGE_EDGE   = 2000;   // longest side after compression (px)
 
 function isValidImage(file) {
   return !!file && Object.prototype.hasOwnProperty.call(IMAGE_TYPES, file.type) && file.size <= IMAGE_MAX;
@@ -3015,7 +3016,7 @@ document.querySelectorAll('input[type="file"][data-preview]').forEach(input => {
     if (!isValidImage(file)) {
       clearImage(input);
       setImageError(input, true);
-      announce('ניתן להעלות רק JPG, PNG או WEBP עד 5MB');
+      announce('ניתן להעלות רק JPG, PNG או WEBP עד 15MB');
       return;
     }
     setImageError(input, false);
@@ -3034,18 +3035,39 @@ document.querySelectorAll('input[type="file"][data-preview]').forEach(input => {
   });
 });
 
+// Shrink the photo in the browser before upload: phone photos (5–15MB) become ~0.3–1MB JPEGs.
+// If the browser cannot decode the file, the original is uploaded unchanged.
+async function compressImage(file) {
+  try {
+    const bitmap = await createImageBitmap(file);
+    const scale  = Math.min(1, IMAGE_EDGE / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement('canvas');
+    canvas.width  = Math.round(bitmap.width * scale);
+    canvas.height = Math.round(bitmap.height * scale);
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    if (bitmap.close) bitmap.close();
+    const blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', 0.85));
+    return blob && blob.size < file.size ? blob : file;
+  } catch { return file; }
+}
+
 async function uploadReferenceImage(file) {
   try {
-    const path = `${crypto.randomUUID()}.${IMAGE_TYPES[file.type]}`;
+    const body = await compressImage(file);
+    const type = body.type || file.type;
+    const path = `${crypto.randomUUID()}.${IMAGE_TYPES[type] || 'jpg'}`;
     const res = await fetch(`${SUPABASE_URL}/storage/v1/object/${IMAGE_BUCKET}/${path}`, {
       method: 'POST',
       headers: {
         'apikey': SUPABASE_ANON,
         'Authorization': `Bearer ${SUPABASE_ANON}`,
-        'Content-Type': file.type,
+        'Content-Type': type,
         'x-upsert': 'false'
       },
-      body: file
+      body
     });
     return res.ok ? path : null;
   } catch { return null; }
@@ -3077,7 +3099,7 @@ async function handleSubmit(e, successId) {
   if (imageFile && !isValidImage(imageFile)) {
     setImageError(imageInput, true);
     imageInput.focus();
-    announce('ניתן להעלות רק JPG, PNG או WEBP עד 5MB');
+    announce('ניתן להעלות רק JPG, PNG או WEBP עד 15MB');
     return;
   }
 
