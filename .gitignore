@@ -20,3 +20,7 @@ qa/test-results/
 .claude/skills/
 .claude/user-preferences.md
 skills-lock.json
+
+# Orchestrator (local secrets and working files)
+.env
+.orchestrator/
