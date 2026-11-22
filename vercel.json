@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/case-study", "destination": "https://claude.ai/artifact/7ZSn8FSPQzq5zMRM5dXFuc", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/(.*)",
